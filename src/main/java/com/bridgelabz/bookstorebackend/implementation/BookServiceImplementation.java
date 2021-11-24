@@ -2,7 +2,7 @@ package com.bridgelabz.bookstorebackend.implementation;
 
 import com.bridgelabz.bookstorebackend.data.BooksData;
 import com.bridgelabz.bookstorebackend.dto.BookDTO;
-import com.bridgelabz.bookstorebackend.exception.EmployeeException;
+import com.bridgelabz.bookstorebackend.exception.BooksException;
 import com.bridgelabz.bookstorebackend.repository.BooksRepository;
 import com.bridgelabz.bookstorebackend.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class BookServiceImplementation implements BooksService {
 
     @Override
     public BooksData getBookDataById(int id) {
-        return booksRepository.findById(id).orElseThrow(() -> new EmployeeException("Employee not found"));
+        return booksRepository.findById(id).orElseThrow(() -> new BooksException("Books not found"));
     }
 
     @Override
