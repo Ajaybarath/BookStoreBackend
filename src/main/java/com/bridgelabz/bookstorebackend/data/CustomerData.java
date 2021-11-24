@@ -22,7 +22,11 @@ public @Data class CustomerData {
 	int customerId;
 
 	String fullName;
+	
+	@Column(unique=true)
 	String phoneNumber;
+	
+	@Column(unique=true)
 	String email;
 	String password;
 
