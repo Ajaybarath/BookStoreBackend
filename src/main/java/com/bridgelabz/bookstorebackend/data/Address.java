@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "address")
-public @Data class AddressData {
+public @Data class Address {
 
 	@Id
 	@JoinColumn(name = "customer.customer_id")
@@ -21,11 +21,11 @@ public @Data class AddressData {
 	String state;
 	String addressType;
 
-	public AddressData() {
+	public Address() {
 
 	}
 
-	public AddressData(int customerId, AddressDTO addressDTO) {
+	public Address(int customerId, AddressDTO addressDTO) {
 		this.customerId = customerId;
 		this.address = addressDTO.getAddress();
 		this.city = addressDTO.getCity();

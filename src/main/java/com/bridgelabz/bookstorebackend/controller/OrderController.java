@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bridgelabz.bookstorebackend.data.MyOrderData;
+import com.bridgelabz.bookstorebackend.data.MyOrder;
 import com.bridgelabz.bookstorebackend.dto.MyOrderDTO;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 import com.bridgelabz.bookstorebackend.service.OrderServiceIF;
@@ -27,14 +27,14 @@ public class OrderController {
 	@PostMapping("/createOrders")
 	public ResponseEntity<ResponseDTO> createlOrders(@RequestBody MyOrderDTO myOrderDTO,
 			@RequestHeader("customerId") int customerId) {
-		MyOrderData myOrderData = orderService.createOrders(customerId, myOrderDTO);
+		MyOrder myOrderData = orderService.createOrders(customerId, myOrderDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Order Created", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/getOrders")
 	public ResponseEntity<ResponseDTO> getAllOrders(@RequestHeader("customerId") int customerId) {
-		List<MyOrderData> myOrderData = orderService.getOrders(customerId);
+		List<MyOrder> myOrderData = orderService.getOrders(customerId);
 		ResponseDTO responseDTO = new ResponseDTO("My Orders", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}

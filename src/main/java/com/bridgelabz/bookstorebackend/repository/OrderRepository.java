@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.bridgelabz.bookstorebackend.data.MyOrderData;
+import com.bridgelabz.bookstorebackend.data.MyOrder;
 
-public interface OrderRepository extends JpaRepository<MyOrderData, Integer>{
+public interface OrderRepository extends JpaRepository<MyOrder, Integer>{
 
 	@Query(value = "SELECT * FROM my_order WHERE customer_id = :customerId", nativeQuery = true)
-	List<MyOrderData> getOrderByCustomerId(int customerId);
+	List<MyOrder> getOrderByCustomerId(int customerId);
 
 }

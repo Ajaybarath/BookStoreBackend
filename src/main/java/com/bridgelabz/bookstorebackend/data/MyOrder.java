@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "my_order")
-public @Data class MyOrderData {
+public @Data class MyOrder {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,11 +36,11 @@ public @Data class MyOrderData {
 
 	LocalDate orderDate;
 
-	public MyOrderData() {
+	public MyOrder() {
 
 	}
 
-	public MyOrderData(int customerId, MyOrderDTO myOrderDTO) {
+	public MyOrder(int customerId, MyOrderDTO myOrderDTO) {
 		this.customerId = customerId;
 		this.bookId = myOrderDTO.getBookId();
 		this.totalCost = myOrderDTO.getTotalCost();
