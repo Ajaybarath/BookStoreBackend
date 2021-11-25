@@ -1,20 +1,20 @@
 package com.bridgelabz.bookstorebackend.service;
 
-import com.bridgelabz.bookstorebackend.data.BooksData;
+import com.bridgelabz.bookstorebackend.data.Books;
 import com.bridgelabz.bookstorebackend.dto.BookDTO;
 
 import java.util.List;
 
 public interface BooksService {
-    BooksData createBook(BookDTO bookDTO);
+    Books createBook(BookDTO bookDTO);
 
-    BooksData getBookDataById(int id);
+    Books getBookDataById(int id);
 
-    List<BooksData> getAllBooksData();
+    List<Books> getAllBooksData();
 
     void deteleBookDataById(int id);
 
-    BooksData updateBookDetail(int id, BookDTO bookDTO);
+    Books updateBookDetail(int id, BookDTO bookDTO);
 
-    BooksData updateBookQuantity(int id, int qty);
+    Books updateBookQuantity(int id, int qty);
 }

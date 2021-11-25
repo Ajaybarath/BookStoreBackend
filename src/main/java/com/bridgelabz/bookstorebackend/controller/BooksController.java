@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.controller;
 
-import com.bridgelabz.bookstorebackend.data.BooksData;
+import com.bridgelabz.bookstorebackend.data.Books;
 import com.bridgelabz.bookstorebackend.dto.BookDTO;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 import com.bridgelabz.bookstorebackend.service.BooksService;
@@ -20,7 +20,7 @@ public class BooksController {
 
     @GetMapping(value = {"", "/", "/get"})
     public ResponseEntity<ResponseDTO> getAllBooks() {
-        List<BooksData> booksList = null;
+        List<Books> booksList = null;
         booksList = booksService.getAllBooksData();
         ResponseDTO responseDTO = new ResponseDTO("Get call successful", booksList);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
@@ -28,32 +28,32 @@ public class BooksController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<ResponseDTO> getBokById(@PathVariable("id") int id) {
-        BooksData booksData = booksService.getBookDataById((int) id);
-        ResponseDTO responseDTO = new ResponseDTO("Get call for id successful", booksData);
+        Books books = booksService.getBookDataById((int) id);
+        ResponseDTO responseDTO = new ResponseDTO("Get call for id successful", books);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> createBookById(@RequestBody BookDTO bookDTO) {
-        BooksData booksData = null;
-        booksData = booksService.createBook(bookDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Created book dto", booksData);
+        Books books = null;
+        books = booksService.createBook(bookDTO);
+        ResponseDTO responseDTO = new ResponseDTO("Created book dto", books);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<ResponseDTO> updateBookById(@PathVariable("id") int id, @RequestBody BookDTO bookDTO) {
-        BooksData booksData = null;
-        booksData = booksService.updateBookDetail(id, bookDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Updated book dto", booksData);
+        Books books = null;
+        books = booksService.updateBookDetail(id, bookDTO);
+        ResponseDTO responseDTO = new ResponseDTO("Updated book dto", books);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}/qty/{qty}")
     public ResponseEntity<ResponseDTO> updateBookQuantity(@PathVariable("id") int id, @PathVariable("qty") int qty) {
-        BooksData booksData = null;
-        booksData = booksService.updateBookQuantity(id, qty);
-        ResponseDTO responseDTO = new ResponseDTO("Created book dto", booksData);
+        Books books = null;
+        books = booksService.updateBookQuantity(id, qty);
+        ResponseDTO responseDTO = new ResponseDTO("Created book dto", books);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 

@@ -1,10 +1,10 @@
 package com.bridgelabz.bookstorebackend.repository;
 
-import com.bridgelabz.bookstorebackend.data.ReviewData;
+import com.bridgelabz.bookstorebackend.data.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ReviewRepository extends JpaRepository<ReviewData, Integer> {
-    List<ReviewData> findByBookId(int id);
+public interface ReviewRepository extends JpaRepository<Review, Integer> {
+    List<Review> findByBookId(int id);
 }
