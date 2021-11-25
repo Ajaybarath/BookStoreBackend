@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "wishlists")
 public @Data
 @ToString
-class WishlistData {
+class Wishlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,22 +28,22 @@ class WishlistData {
             joinColumns = @JoinColumn(name = "wishlist_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
-    List<BooksData> booksList = new ArrayList<>();
+    List<Books> booksList = new ArrayList<>();
 
-    public WishlistData(int userId) {
+    public Wishlist(int userId) {
         this.userId = userId;
     }
 
-    public void addBooks(BooksData booksData) {
-        booksList.add(booksData);
+    public void addBooks(Books books) {
+        booksList.add(books);
 //        booksData.getWishlist().add(this);
     }
 
-    public void removeBooks(BooksData booksData) {
-        booksList.remove(booksData);
+    public void removeBooks(Books books) {
+        booksList.remove(books);
 //        booksData.getWishlist().remove(this);
     }
 
-    public WishlistData() {
+    public Wishlist() {
     }
 }

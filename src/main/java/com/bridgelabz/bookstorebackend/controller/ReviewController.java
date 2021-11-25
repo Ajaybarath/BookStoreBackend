@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.controller;
 
-import com.bridgelabz.bookstorebackend.data.ReviewData;
+import com.bridgelabz.bookstorebackend.data.Review;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 import com.bridgelabz.bookstorebackend.dto.ReviewDTO;
 import com.bridgelabz.bookstorebackend.service.ReviewService;
@@ -20,15 +20,15 @@ public class ReviewController {
 
     @GetMapping("/get/{bookId}")
     public ResponseEntity<ResponseDTO> getAllRewiewsByBook(@PathVariable("bookId") int bookId) {
-        List<ReviewData> reviewList = reviewService.getAllRewiewsByBook(bookId);
+        List<Review> reviewList = reviewService.getAllRewiewsByBook(bookId);
         ResponseDTO responseDTO = new ResponseDTO("Get call successful", reviewList);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
     @PostMapping("/create/userReview/")
     public ResponseEntity<ResponseDTO> createReviewByBookId(@RequestBody ReviewDTO reviewDTO) {
-        ReviewData reviewData = reviewService.createReview(reviewDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Created book dto", reviewData);
+        Review review = reviewService.createReview(reviewDTO);
+        ResponseDTO responseDTO = new ResponseDTO("Created book dto", review);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 }

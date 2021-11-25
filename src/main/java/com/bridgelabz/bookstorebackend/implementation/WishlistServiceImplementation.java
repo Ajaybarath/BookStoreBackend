@@ -1,7 +1,7 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
-import com.bridgelabz.bookstorebackend.data.BooksData;
-import com.bridgelabz.bookstorebackend.data.WishlistData;
+import com.bridgelabz.bookstorebackend.data.Books;
+import com.bridgelabz.bookstorebackend.data.Wishlist;
 import com.bridgelabz.bookstorebackend.repository.WishlistRepository;
 import com.bridgelabz.bookstorebackend.service.BooksService;
 import com.bridgelabz.bookstorebackend.service.WishlistService;
@@ -20,36 +20,36 @@ public class WishlistServiceImplementation implements WishlistService {
     WishlistRepository wishlistRepository;
 
     @Override
-    public WishlistData addBookToWishList(int bookId, int userId) {
-        BooksData booksData = booksService.getBookDataById(bookId);
-        WishlistData wishlistData = wishlistRepository.findByUserId(userId);
-        if (wishlistData == null) {
-            wishlistData = new WishlistData(userId);
+    public Wishlist addBookToWishList(int bookId, int userId) {
+        Books books = booksService.getBookDataById(bookId);
+        Wishlist wishlist = wishlistRepository.findByUserId(userId);
+        if (wishlist == null) {
+            wishlist = new Wishlist(userId);
         }
 
-        if (!wishlistData.getBooksList().contains(booksData)) {
-            wishlistData.addBooks(booksData);
+        if (!wishlist.getBooksList().contains(books)) {
+            wishlist.addBooks(books);
         }
 
-        return wishlistRepository.save(wishlistData);
+        return wishlistRepository.save(wishlist);
 
     }
 
     @Override
-    public List<BooksData> getWishlistByUserId(int userId) {
+    public List<Books> getWishlistByUserId(int userId) {
         return wishlistRepository.findByUserId(userId).getBooksList();
     }
 
     @Override
-    public WishlistData removeBooksFromWishlist(int bookId, int userId) {
-        BooksData booksData = booksService.getBookDataById(bookId);
-        WishlistData wishlistData = wishlistRepository.findByUserId(userId);
-        if (wishlistData == null) {
-            wishlistData = new WishlistData(userId);
+    public Wishlist removeBooksFromWishlist(int bookId, int userId) {
+        Books books = booksService.getBookDataById(bookId);
+        Wishlist wishlist = wishlistRepository.findByUserId(userId);
+        if (wishlist == null) {
+            wishlist = new Wishlist(userId);
         }
 
-        wishlistData.removeBooks(booksData);
-        return wishlistRepository.save(wishlistData);
+        wishlist.removeBooks(books);
+        return wishlistRepository.save(wishlist);
 
     }
 }

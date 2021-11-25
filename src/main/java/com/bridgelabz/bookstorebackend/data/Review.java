@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "reviews")
 public @Data
 @ToString
-class ReviewData {
+class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,13 +22,13 @@ class ReviewData {
     int rating;
     String review;
 
-    public ReviewData(ReviewDTO reviewDTO) {
+    public Review(ReviewDTO reviewDTO) {
         this.userId = reviewDTO.getUserId();
         this.bookId = reviewDTO.getBookId();
         this.rating = reviewDTO.getRating();
         this.review = reviewDTO.getReview();
     }
 
-    public ReviewData() {
+    public Review() {
     }
 }

@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
-import com.bridgelabz.bookstorebackend.data.BooksData;
+import com.bridgelabz.bookstorebackend.data.Books;
 import com.bridgelabz.bookstorebackend.dto.BookDTO;
 import com.bridgelabz.bookstorebackend.exception.BooksException;
 import com.bridgelabz.bookstorebackend.repository.BooksRepository;
@@ -17,38 +17,38 @@ public class BookServiceImplementation implements BooksService {
     BooksRepository booksRepository;
 
     @Override
-    public BooksData createBook(BookDTO bookDTO) {
-        BooksData booksData = new BooksData(bookDTO);
-        return booksRepository.save(booksData);
+    public Books createBook(BookDTO bookDTO) {
+        Books books = new Books(bookDTO);
+        return booksRepository.save(books);
     }
 
     @Override
-    public BooksData getBookDataById(int id) {
+    public Books getBookDataById(int id) {
         return booksRepository.findById(id).orElseThrow(() -> new BooksException("Books not found"));
     }
 
     @Override
-    public List<BooksData> getAllBooksData() {
+    public List<Books> getAllBooksData() {
         return booksRepository.findAll();
     }
 
     @Override
     public void deteleBookDataById(int id) {
-        BooksData booksData = this.getBookDataById(id);
-        booksRepository.delete(booksData);
+        Books books = this.getBookDataById(id);
+        booksRepository.delete(books);
     }
 
     @Override
-    public BooksData updateBookDetail(int id, BookDTO bookDTO) {
-        BooksData booksData = this.getBookDataById(id);
-        booksData.update(bookDTO);
-        return booksRepository.save(booksData);
+    public Books updateBookDetail(int id, BookDTO bookDTO) {
+        Books books = this.getBookDataById(id);
+        books.update(bookDTO);
+        return booksRepository.save(books);
     }
 
     @Override
-    public BooksData updateBookQuantity(int id, int qty) {
-        BooksData booksData = this.getBookDataById(id);
-        booksData.updateQuantity(qty);
-        return booksRepository.save(booksData);
+    public Books updateBookQuantity(int id, int qty) {
+        Books books = this.getBookDataById(id);
+        books.updateQuantity(qty);
+        return booksRepository.save(books);
     }
 }

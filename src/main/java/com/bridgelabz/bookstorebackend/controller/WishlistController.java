@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.controller;
 
-import com.bridgelabz.bookstorebackend.data.BooksData;
+import com.bridgelabz.bookstorebackend.data.Books;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 import com.bridgelabz.bookstorebackend.service.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class WishlistController {
 
     @GetMapping("get/{userId}")
     public ResponseEntity<ResponseDTO> getWishListByUserId(@PathVariable("userId") int userId) {
-        List<BooksData> wishList = wishlistService.getWishlistByUserId(userId);
+        List<Books> wishList = wishlistService.getWishlistByUserId(userId);
         ResponseDTO responseDTO = new ResponseDTO("get books from wish list", wishList);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }

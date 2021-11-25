@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "books")
 public @Data
 @ToString
-class BooksData {
+class Books {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,10 +30,10 @@ class BooksData {
     @Column(name = "imageUrl")
     List<String> imageUrl;
 
-    public BooksData() {
+    public Books() {
     }
 
-    public BooksData(BookDTO bookDTO) {
+    public Books(BookDTO bookDTO) {
         this.name = bookDTO.getName();
         this.author = bookDTO.getAuthor();
         this.details = bookDTO.getDetails();
