@@ -2,6 +2,7 @@ package com.bridgelabz.bookstorebackend.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
@@ -13,6 +14,7 @@ import lombok.Data;
 public @Data class AddressData {
 
 	@Id
+	@JoinColumn(name = "customer.customer_id")
 	int customerId;
 	String address;
 	String city;
