@@ -1,4 +1,4 @@
-package com.bridgelabz.bookstorebackend.data;
+package com.bridgelabz.bookstorebackend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

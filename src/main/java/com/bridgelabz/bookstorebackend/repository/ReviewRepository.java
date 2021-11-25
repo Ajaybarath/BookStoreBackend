@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.repository;
 
-import com.bridgelabz.bookstorebackend.data.Review;
+import com.bridgelabz.bookstorebackend.model.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

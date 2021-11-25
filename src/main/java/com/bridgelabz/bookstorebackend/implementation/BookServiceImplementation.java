@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
-import com.bridgelabz.bookstorebackend.data.Books;
+import com.bridgelabz.bookstorebackend.model.Books;
 import com.bridgelabz.bookstorebackend.dto.BookDTO;
 import com.bridgelabz.bookstorebackend.exception.BooksException;
 import com.bridgelabz.bookstorebackend.repository.BooksRepository;

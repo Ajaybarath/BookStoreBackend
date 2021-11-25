@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bridgelabz.bookstorebackend.data.Address;
-import com.bridgelabz.bookstorebackend.data.Customer;
+import com.bridgelabz.bookstorebackend.model.Address;
+import com.bridgelabz.bookstorebackend.model.Customer;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
 import com.bridgelabz.bookstorebackend.service.CustomerServiceIF;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;

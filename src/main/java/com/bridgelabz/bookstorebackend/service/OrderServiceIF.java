@@ -2,7 +2,7 @@ package com.bridgelabz.bookstorebackend.service;
 
 import java.util.List;
 
-import com.bridgelabz.bookstorebackend.data.MyOrder;
+import com.bridgelabz.bookstorebackend.model.MyOrder;
 import com.bridgelabz.bookstorebackend.dto.MyOrderDTO;
 
 public interface OrderServiceIF {

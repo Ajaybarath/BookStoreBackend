@@ -1,4 +1,4 @@
-package com.bridgelabz.bookstorebackend.data;
+package com.bridgelabz.bookstorebackend.model;
 
 import com.bridgelabz.bookstorebackend.dto.BookDTO;
 import lombok.Data;
