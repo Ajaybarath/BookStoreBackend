@@ -1,5 +1,7 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import com.bridgelabz.bookstorebackend.data.CustomerData;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
 import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
+import com.bridgelabz.bookstorebackend.exception.BooksException;
 import com.bridgelabz.bookstorebackend.repository.AddressRepository;
 import com.bridgelabz.bookstorebackend.repository.CustomerRepository;
 import com.bridgelabz.bookstorebackend.service.CustomerServiceIF;
@@ -32,6 +35,11 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 		return customerRepository.loginCustomer(loginDTO.getEmail(), loginDTO.getPassword());
 	}
 	
+	@Override
+	public CustomerData getCustomerById(int customerId) {
+		return customerRepository.findById(customerId).orElseThrow(() -> new BooksException("Customer Not Found"));
+	}
+
 	public AddressData getAddressById(int customerId, String addressType) {
 		return addressRepository.getAddress(customerId, addressType);
 	}
@@ -48,5 +56,6 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 		addressData.updateAddress(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}
+
 
 }

@@ -9,10 +9,13 @@ import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
 public interface CustomerServiceIF {
 
 	CustomerData signUpCustomer(SignUpDTO signUpDTO);
-	
+
 	CustomerData loginCustomer(LoginDTO loginDTO);
+
+	CustomerData getCustomerById(int customerId);
 
 	AddressData addAddress(int customerId, AddressDTO addressDTO);
 
 	AddressData updateAddress(int customerId, AddressDTO addressDTO);
+
 }

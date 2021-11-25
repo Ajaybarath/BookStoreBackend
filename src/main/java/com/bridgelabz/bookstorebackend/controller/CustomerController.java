@@ -3,6 +3,7 @@ package com.bridgelabz.bookstorebackend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,14 @@ public class CustomerController {
 		CustomerData customerData = null;
 		customerData = customerService.loginCustomer(loginDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Logged In", customerData);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
+	
+	@GetMapping("/get")
+	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("customerId") int customerId) {
+		CustomerData customerData = null;
+		customerData = customerService.getCustomerById(customerId);
+		ResponseDTO responseDTO = new ResponseDTO("Customer Found", customerData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
