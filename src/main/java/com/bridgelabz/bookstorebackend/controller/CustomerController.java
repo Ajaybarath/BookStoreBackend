@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bridgelabz.bookstorebackend.data.AddressData;
-import com.bridgelabz.bookstorebackend.data.CustomerData;
+import com.bridgelabz.bookstorebackend.data.Address;
+import com.bridgelabz.bookstorebackend.data.Customer;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
 import com.bridgelabz.bookstorebackend.service.CustomerServiceIF;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
@@ -28,7 +28,7 @@ public class CustomerController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<ResponseDTO> signUpCustomer(@RequestBody SignUpDTO signUpDTO) {
-		CustomerData customerData = null;
+		Customer customerData = null;
 		customerData = customerService.signUpCustomer(signUpDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Signed Up", customerData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
@@ -36,7 +36,7 @@ public class CustomerController {
 
 	@PostMapping("/login")
 	public ResponseEntity<ResponseDTO> loginCustomer(@RequestBody LoginDTO loginDTO) {
-		CustomerData customerData = null;
+		Customer customerData = null;
 		customerData = customerService.loginCustomer(loginDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Logged In", customerData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
@@ -44,7 +44,7 @@ public class CustomerController {
 	
 	@GetMapping("/get")
 	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("customerId") int customerId) {
-		CustomerData customerData = null;
+		Customer customerData = null;
 		customerData = customerService.getCustomerById(customerId);
 		ResponseDTO responseDTO = new ResponseDTO("Customer Found", customerData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
@@ -53,7 +53,7 @@ public class CustomerController {
 	@PostMapping("/createAddress")
 	public ResponseEntity<ResponseDTO> addAddress(@RequestBody AddressDTO addressDTO,
 			@RequestHeader("customerId") int customerId) {
-		AddressData addressData = null;
+		Address addressData = null;
 		addressData = customerService.addAddress(customerId, addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Address Added", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
@@ -62,7 +62,7 @@ public class CustomerController {
 	@PutMapping("/updateAddress")
 	public ResponseEntity<ResponseDTO> updateAddress(@RequestBody AddressDTO addressDTO,
 			@RequestHeader("customerId") int customerId) {
-		AddressData addressData = null;
+		Address addressData = null;
 		addressData = customerService.updateAddress(customerId, addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Address Updated", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);

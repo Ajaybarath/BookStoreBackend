@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bridgelabz.bookstorebackend.data.MyOrderData;
+import com.bridgelabz.bookstorebackend.data.MyOrder;
 import com.bridgelabz.bookstorebackend.dto.MyOrderDTO;
 import com.bridgelabz.bookstorebackend.repository.OrderRepository;
 import com.bridgelabz.bookstorebackend.service.OrderServiceIF;
@@ -17,13 +17,13 @@ public class OrderServiceImpl implements OrderServiceIF {
 	OrderRepository orderRepository;
 	
 	@Override
-	public List<MyOrderData> getOrders(int customerId) {
+	public List<MyOrder> getOrders(int customerId) {
 		return orderRepository.getOrderByCustomerId(customerId);
 	}
 
 	@Override
-	public MyOrderData createOrders(int customerId, MyOrderDTO myOrderDTO) {
-		MyOrderData myOrderData = new MyOrderData(customerId, myOrderDTO);
+	public MyOrder createOrders(int customerId, MyOrderDTO myOrderDTO) {
+		MyOrder myOrderData = new MyOrder(customerId, myOrderDTO);
 		return orderRepository.save(myOrderData);
 		
 	}

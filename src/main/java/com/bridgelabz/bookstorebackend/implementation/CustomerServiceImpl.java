@@ -3,8 +3,8 @@ package com.bridgelabz.bookstorebackend.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bridgelabz.bookstorebackend.data.AddressData;
-import com.bridgelabz.bookstorebackend.data.CustomerData;
+import com.bridgelabz.bookstorebackend.data.Address;
+import com.bridgelabz.bookstorebackend.data.Customer;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
 import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
@@ -23,34 +23,34 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 	AddressRepository addressRepository;
 	
 	@Override
-	public CustomerData signUpCustomer(SignUpDTO signUpDTO) {
-		CustomerData customerData = new CustomerData(signUpDTO);
+	public Customer signUpCustomer(SignUpDTO signUpDTO) {
+		Customer customerData = new Customer(signUpDTO);
 		return customerRepository.save(customerData);
 	}
 
 	@Override
-	public CustomerData loginCustomer(LoginDTO loginDTO) {
+	public Customer loginCustomer(LoginDTO loginDTO) {
 		return customerRepository.loginCustomer(loginDTO.getEmail(), loginDTO.getPassword());
 	}
 	
 	@Override
-	public CustomerData getCustomerById(int customerId) {
+	public Customer getCustomerById(int customerId) {
 		return customerRepository.findById(customerId).orElseThrow(() -> new BooksException("Customer Not Found"));
 	}
 
-	public AddressData getAddressById(int customerId, String addressType) {
+	public Address getAddressById(int customerId, String addressType) {
 		return addressRepository.getAddress(customerId, addressType);
 	}
 
 	@Override
-	public AddressData addAddress(int customerId, AddressDTO addressDTO) {
-		AddressData addressData = new AddressData(customerId, addressDTO);
+	public Address addAddress(int customerId, AddressDTO addressDTO) {
+		Address addressData = new Address(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}
 
 	@Override
-	public AddressData updateAddress(int customerId, AddressDTO addressDTO) {
-		AddressData addressData = this.getAddressById(customerId, addressDTO.getAddressType());
+	public Address updateAddress(int customerId, AddressDTO addressDTO) {
+		Address addressData = this.getAddressById(customerId, addressDTO.getAddressType());
 		addressData.updateAddress(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}

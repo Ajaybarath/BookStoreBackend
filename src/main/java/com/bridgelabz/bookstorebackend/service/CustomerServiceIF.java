@@ -1,21 +1,21 @@
 package com.bridgelabz.bookstorebackend.service;
 
-import com.bridgelabz.bookstorebackend.data.AddressData;
-import com.bridgelabz.bookstorebackend.data.CustomerData;
+import com.bridgelabz.bookstorebackend.data.Address;
+import com.bridgelabz.bookstorebackend.data.Customer;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
 import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
 
 public interface CustomerServiceIF {
 
-	CustomerData signUpCustomer(SignUpDTO signUpDTO);
+	Customer signUpCustomer(SignUpDTO signUpDTO);
 
-	CustomerData loginCustomer(LoginDTO loginDTO);
+	Customer loginCustomer(LoginDTO loginDTO);
 
-	CustomerData getCustomerById(int customerId);
+	Customer getCustomerById(int customerId);
 
-	AddressData addAddress(int customerId, AddressDTO addressDTO);
+	Address addAddress(int customerId, AddressDTO addressDTO);
 
-	AddressData updateAddress(int customerId, AddressDTO addressDTO);
+	Address updateAddress(int customerId, AddressDTO addressDTO);
 
 }
