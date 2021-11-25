@@ -31,10 +31,21 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 	public CustomerData loginCustomer(LoginDTO loginDTO) {
 		return customerRepository.loginCustomer(loginDTO.getEmail(), loginDTO.getPassword());
 	}
+	
+	public AddressData getAddressById(int customerId, String addressType) {
+		return addressRepository.getAddress(customerId, addressType);
+	}
 
 	@Override
 	public AddressData addAddress(int customerId, AddressDTO addressDTO) {
 		AddressData addressData = new AddressData(customerId, addressDTO);
+		return addressRepository.save(addressData);
+	}
+
+	@Override
+	public AddressData updateAddress(int customerId, AddressDTO addressDTO) {
+		AddressData addressData = this.getAddressById(customerId, addressDTO.getAddressType());
+		addressData.updateAddress(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}
 

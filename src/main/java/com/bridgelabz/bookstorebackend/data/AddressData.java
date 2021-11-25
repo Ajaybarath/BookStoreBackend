@@ -30,4 +30,12 @@ public @Data class AddressData {
 		this.state = addressDTO.getState();
 		this.addressType = addressDTO.getAddressType();
 	}
+	
+	public void updateAddress(int customerId, AddressDTO addressDTO) {
+		this.customerId = customerId;
+		this.address = addressDTO.getAddress();
+		this.city = addressDTO.getCity();
+		this.state = addressDTO.getState();
+		this.addressType = addressDTO.getAddressType();
+	}
 }

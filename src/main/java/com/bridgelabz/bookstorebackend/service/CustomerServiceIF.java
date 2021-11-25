@@ -13,4 +13,6 @@ public interface CustomerServiceIF {
 	CustomerData loginCustomer(LoginDTO loginDTO);
 
 	AddressData addAddress(int customerId, AddressDTO addressDTO);
+
+	AddressData updateAddress(int customerId, AddressDTO addressDTO);
 }
