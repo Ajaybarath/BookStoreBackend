@@ -21,19 +21,19 @@ public @Data class MyOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "order_id")
-	int orderId;
+	private int orderId;
 
 	@JoinColumn(name = "customer.customer_id")
-	int customerId;
+	private int customerId;
 
 	@JoinColumn(name = "books.book_id")
-	int bookId;
+	private int bookId;
 
-	int totalCost;
+	private int totalCost;
 
-	int quantity;
+	private int quantity;
 
-	LocalDate orderDate;
+	private LocalDate orderDate;
 
 	public MyOrder() {
 

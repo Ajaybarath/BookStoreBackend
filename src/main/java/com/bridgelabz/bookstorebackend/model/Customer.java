@@ -19,16 +19,16 @@ public @Data class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "customer_id")
-	int customerId;
+	private int customerId;
 
-	String fullName;
+	private String fullName;
 	
 	@Column(unique=true)
-	String phoneNumber;
+	private String phoneNumber;
 	
 	@Column(unique=true)
-	String email;
-	String password;
+	private String email;
+	private String password;
 
 	public Customer() {
 
