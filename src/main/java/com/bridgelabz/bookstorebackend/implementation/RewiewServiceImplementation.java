@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
-import com.bridgelabz.bookstorebackend.data.Review;
+import com.bridgelabz.bookstorebackend.model.Review;
 import com.bridgelabz.bookstorebackend.dto.ReviewDTO;
 import com.bridgelabz.bookstorebackend.repository.ReviewRepository;
 import com.bridgelabz.bookstorebackend.service.ReviewService;

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bridgelabz.bookstorebackend.data.MyOrder;
+import com.bridgelabz.bookstorebackend.model.MyOrder;
 import com.bridgelabz.bookstorebackend.dto.MyOrderDTO;
 import com.bridgelabz.bookstorebackend.repository.OrderRepository;
 import com.bridgelabz.bookstorebackend.service.OrderServiceIF;

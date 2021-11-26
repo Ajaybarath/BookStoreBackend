@@ -1,7 +1,7 @@
 package com.bridgelabz.bookstorebackend.service;
 
-import com.bridgelabz.bookstorebackend.data.Address;
-import com.bridgelabz.bookstorebackend.data.Customer;
+import com.bridgelabz.bookstorebackend.model.Address;
+import com.bridgelabz.bookstorebackend.model.Customer;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
 import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;

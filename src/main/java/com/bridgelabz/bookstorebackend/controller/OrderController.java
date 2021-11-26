@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bridgelabz.bookstorebackend.data.MyOrder;
+import com.bridgelabz.bookstorebackend.model.MyOrder;
 import com.bridgelabz.bookstorebackend.dto.MyOrderDTO;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 import com.bridgelabz.bookstorebackend.service.OrderServiceIF;

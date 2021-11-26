@@ -1,7 +1,7 @@
 package com.bridgelabz.bookstorebackend.service;
 
-import com.bridgelabz.bookstorebackend.data.Books;
-import com.bridgelabz.bookstorebackend.data.Wishlist;
+import com.bridgelabz.bookstorebackend.model.Books;
+import com.bridgelabz.bookstorebackend.model.Wishlist;
 
 import java.util.List;
 
