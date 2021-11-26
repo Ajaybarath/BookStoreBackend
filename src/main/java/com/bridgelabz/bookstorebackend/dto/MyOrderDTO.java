@@ -21,7 +21,7 @@ public @Data class MyOrderDTO {
 	int quantity;
 	
 	@JsonFormat(pattern="dd MMM yyyy")
-	@NotNull(message="Start date should not be empty")
-	@PastOrPresent(message = "Start date should be past or todays date")
+	@NotNull(message="Date Should Not be Empty")
+	@PastOrPresent(message = "Date should be past or todays date")
 	LocalDate orderDate;
 }
