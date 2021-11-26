@@ -27,4 +27,9 @@ public class OrderServiceImpl implements OrderServiceIF {
 		return orderRepository.save(myOrderData);
 		
 	}
+
+	@Override
+	public Object getBookWithOrders(int customerId) {
+		return orderRepository.getBookWithOrder(customerId);
+	}
 }
