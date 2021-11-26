@@ -9,4 +9,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
 	@Query(value = "SELECT * FROM customer WHERE email = :email AND password = :password", nativeQuery = true)
 	Customer loginCustomer(String email, String password);
+
+	@Query(value = "SELECT * FROM customer WHERE email = :email", nativeQuery = true)
+	Customer getPassword(String email);
 }

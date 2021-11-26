@@ -32,6 +32,11 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 	public Customer loginCustomer(LoginDTO loginDTO) {
 		return customerRepository.loginCustomer(loginDTO.getEmail(), loginDTO.getPassword());
 	}
+
+	@Override
+	public Customer getPassword(String email) {
+		return customerRepository.getPassword(email);
+	}
 	
 	@Override
 	public Customer getCustomerById(int customerId) {
@@ -54,6 +59,7 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 		addressData.updateAddress(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}
+
 
 
 }

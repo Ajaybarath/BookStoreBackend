@@ -49,6 +49,14 @@ public class CustomerController {
 		ResponseDTO responseDTO = new ResponseDTO("Customer Found", customerData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
+	
+	@PostMapping("/forgotPassword")
+	public ResponseEntity<ResponseDTO> getPassword(@RequestBody String email) {
+		Customer customerData = null;
+		customerData = customerService.getPassword(email);
+		ResponseDTO responseDTO = new ResponseDTO("Customer Details", customerData);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
 
 	@PostMapping("/createAddress")
 	public ResponseEntity<ResponseDTO> addAddress(@RequestBody AddressDTO addressDTO,
