@@ -20,7 +20,7 @@ import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/bookstore/customer")
 public class CustomerController {
 
 	@Autowired
