@@ -1,7 +1,7 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
-import com.bridgelabz.bookstorebackend.data.Books;
-import com.bridgelabz.bookstorebackend.data.Wishlist;
+import com.bridgelabz.bookstorebackend.model.Books;
+import com.bridgelabz.bookstorebackend.model.Wishlist;
 import com.bridgelabz.bookstorebackend.repository.WishlistRepository;
 import com.bridgelabz.bookstorebackend.service.BooksService;
 import com.bridgelabz.bookstorebackend.service.WishlistService;

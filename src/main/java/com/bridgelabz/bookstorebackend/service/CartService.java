@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.service;
 
-import com.bridgelabz.bookstorebackend.data.Cart;
+import com.bridgelabz.bookstorebackend.model.Cart;
 import com.bridgelabz.bookstorebackend.dto.CartItemDTO;
 
 public interface CartService {

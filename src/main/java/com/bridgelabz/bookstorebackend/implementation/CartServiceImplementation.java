@@ -1,8 +1,7 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
-import com.bridgelabz.bookstorebackend.data.Books;
-import com.bridgelabz.bookstorebackend.data.Cart;
-import com.bridgelabz.bookstorebackend.data.CartItem;
+import com.bridgelabz.bookstorebackend.model.Books;
+import com.bridgelabz.bookstorebackend.model.Cart;
 import com.bridgelabz.bookstorebackend.dto.CartItemDTO;
 import com.bridgelabz.bookstorebackend.repository.CartItemRepository;
 import com.bridgelabz.bookstorebackend.repository.CartRepository;
@@ -10,8 +9,6 @@ import com.bridgelabz.bookstorebackend.service.BooksService;
 import com.bridgelabz.bookstorebackend.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CartServiceImplementation implements CartService {

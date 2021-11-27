@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstorebackend.service;
 
-import com.bridgelabz.bookstorebackend.data.Books;
+import com.bridgelabz.bookstorebackend.model.Books;
 import com.bridgelabz.bookstorebackend.dto.BookDTO;
 
 import java.util.List;
