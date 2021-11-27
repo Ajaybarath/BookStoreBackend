@@ -1,5 +1,7 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,23 +41,24 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 	}
 
 	@Override
-	public Customer getCustomerById(int customerId) {
+	public Customer getCustomerById(UUID customerId) {
 		return customerRepository.findById(customerId).orElseThrow(() -> new BooksException("Customer Not Found"));
 	}
 
-	public Address getAddressById(int customerId, String addressType) {
+	public Address getAddressById(UUID customerId, String addressType) {
 		return addressRepository.getAddress(customerId, addressType);
 	}
 
 	@Override
-	public Address addAddress(int customerId, AddressDTO addressDTO) {
+	public Address addAddress(UUID customerId, AddressDTO addressDTO) {
 		Address addressData = new Address(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}
 
 	@Override
-	public Address updateAddress(int customerId, AddressDTO addressDTO) {
+	public Address updateAddress(UUID customerId, AddressDTO addressDTO) {
 		Address addressData = this.getAddressById(customerId, addressDTO.getAddressType());
+		System.out.println(addressData);
 		addressData.updateAddress(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}

@@ -1,9 +1,10 @@
 package com.bridgelabz.bookstorebackend.model;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,9 +18,9 @@ import lombok.Data;
 public @Data class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "customer_id")
-	private int customerId;
+	@Column(name = "customer_id", columnDefinition = "BINARY(16)")
+	@GeneratedValue
+	private UUID customerId;
 
 	private String fullName;
 

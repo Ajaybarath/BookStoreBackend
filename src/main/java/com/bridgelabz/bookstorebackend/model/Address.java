@@ -1,5 +1,7 @@
 package com.bridgelabz.bookstorebackend.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,7 +17,7 @@ public @Data class Address {
 
 	@Id
 	@JoinColumn(name = "customer.customer_id")
-	private int customerId;
+	private UUID customerId;
 	private String address;
 	private String city;
 	private String state;
@@ -25,7 +27,7 @@ public @Data class Address {
 
 	}
 
-	public Address(int customerId, AddressDTO addressDTO) {
+	public Address(UUID customerId, AddressDTO addressDTO) {
 		this.customerId = customerId;
 		this.address = addressDTO.getAddress();
 		this.city = addressDTO.getCity();
@@ -33,7 +35,7 @@ public @Data class Address {
 		this.addressType = addressDTO.getAddressType();
 	}
 
-	public void updateAddress(int customerId, AddressDTO addressDTO) {
+	public void updateAddress(UUID customerId, AddressDTO addressDTO) {
 		this.customerId = customerId;
 		this.address = addressDTO.getAddress();
 		this.city = addressDTO.getCity();

@@ -1,5 +1,7 @@
 package com.bridgelabz.bookstorebackend.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +45,7 @@ public class CustomerController {
 	}
 
 	@GetMapping("/get")
-	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("customerId") int customerId) {
+	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("customerId") UUID customerId) {
 		Customer customerData = null;
 		customerData = customerService.getCustomerById(customerId);
 		ResponseDTO responseDTO = new ResponseDTO("Customer Found", customerData);
@@ -60,7 +62,7 @@ public class CustomerController {
 
 	@PostMapping("/createAddress")
 	public ResponseEntity<ResponseDTO> addAddress(@RequestBody AddressDTO addressDTO,
-			@RequestHeader("customerId") int customerId) {
+			@RequestHeader("customerId") UUID customerId) {
 		Address addressData = null;
 		addressData = customerService.addAddress(customerId, addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Address Added", addressData);
@@ -69,7 +71,7 @@ public class CustomerController {
 
 	@PutMapping("/updateAddress")
 	public ResponseEntity<ResponseDTO> updateAddress(@RequestBody AddressDTO addressDTO,
-			@RequestHeader("customerId") int customerId) {
+			@RequestHeader("customerId") UUID customerId) {
 		Address addressData = null;
 		addressData = customerService.updateAddress(customerId, addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Address Updated", addressData);

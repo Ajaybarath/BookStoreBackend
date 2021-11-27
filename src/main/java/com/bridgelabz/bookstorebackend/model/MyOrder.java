@@ -1,6 +1,7 @@
 package com.bridgelabz.bookstorebackend.model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public @Data class MyOrder {
 	private int orderId;
 
 	@JoinColumn(name = "customer.customer_id")
-	private int customerId;
+	private UUID customerId;
 
 	@JoinColumn(name = "books.book_id")
 	private int bookId;
@@ -39,7 +40,7 @@ public @Data class MyOrder {
 
 	}
 
-	public MyOrder(int customerId, MyOrderDTO myOrderDTO) {
+	public MyOrder(UUID customerId, MyOrderDTO myOrderDTO) {
 		this.customerId = customerId;
 		this.bookId = myOrderDTO.getBookId();
 		this.totalCost = myOrderDTO.getTotalCost();

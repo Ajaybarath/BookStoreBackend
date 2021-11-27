@@ -1,6 +1,7 @@
 package com.bridgelabz.bookstorebackend.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,21 +27,21 @@ public class OrderController {
 
 	@PostMapping("/createOrders")
 	public ResponseEntity<ResponseDTO> createlOrders(@RequestBody MyOrderDTO myOrderDTO,
-			@RequestHeader("customerId") int customerId) {
+			@RequestHeader("customerId") UUID customerId) {
 		MyOrder myOrderData = orderService.createOrders(customerId, myOrderDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Order Created", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/getOrders")
-	public ResponseEntity<ResponseDTO> getAllOrders(@RequestHeader("customerId") int customerId) {
+	public ResponseEntity<ResponseDTO> getAllOrders(@RequestHeader("customerId") UUID customerId) {
 		List<MyOrder> myOrderData = orderService.getOrders(customerId);
 		ResponseDTO responseDTO = new ResponseDTO("My Orders", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/getBookWithOrder")
-	public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("customerId") int customerId) {
+	public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("customerId") UUID customerId) {
 		Object myOrderData = orderService.getBookWithOrders(customerId);
 		ResponseDTO responseDTO = new ResponseDTO("Order Along with Book", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
