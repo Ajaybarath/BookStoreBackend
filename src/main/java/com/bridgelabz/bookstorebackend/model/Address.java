@@ -15,11 +15,11 @@ public @Data class Address {
 
 	@Id
 	@JoinColumn(name = "customer.customer_id")
-	int customerId;
-	String address;
-	String city;
-	String state;
-	String addressType;
+	private int customerId;
+	private String address;
+	private String city;
+	private String state;
+	private String addressType;
 
 	public Address() {
 
@@ -32,7 +32,7 @@ public @Data class Address {
 		this.state = addressDTO.getState();
 		this.addressType = addressDTO.getAddressType();
 	}
-	
+
 	public void updateAddress(int customerId, AddressDTO addressDTO) {
 		this.customerId = customerId;
 		this.address = addressDTO.getAddress();

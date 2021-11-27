@@ -11,4 +11,6 @@ public interface OrderServiceIF {
 
 	MyOrder createOrders(int customerId, MyOrderDTO myOrderDTO);
 
+	Object getBookWithOrders(int customerId);
+
 }

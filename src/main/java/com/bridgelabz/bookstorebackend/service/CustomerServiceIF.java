@@ -18,4 +18,6 @@ public interface CustomerServiceIF {
 
 	Address updateAddress(int customerId, AddressDTO addressDTO);
 
+	Customer getPassword(String email);
+
 }

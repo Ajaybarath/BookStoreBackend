@@ -19,16 +19,16 @@ public @Data class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "customer_id")
-	int customerId;
+	private int customerId;
 
-	String fullName;
-	
-	@Column(unique=true)
-	String phoneNumber;
-	
-	@Column(unique=true)
-	String email;
-	String password;
+	private String fullName;
+
+	@Column(unique = true)
+	private String phoneNumber;
+
+	@Column(unique = true)
+	private String email;
+	private String password;
 
 	public Customer() {
 
@@ -40,7 +40,7 @@ public @Data class Customer {
 		this.email = signUpDTO.getEmail();
 		this.password = signUpDTO.getPassword();
 	}
-	
+
 	public Customer(LoginDTO loginDTO) {
 		this.email = loginDTO.getEmail();
 		this.password = loginDTO.getPassword();

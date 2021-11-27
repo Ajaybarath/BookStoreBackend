@@ -28,20 +28,20 @@ public class BookStoreExceptionHandler {
 		ResponseDTO responseDTO = new ResponseDTO(message, errorMessage);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(BooksException.class)
 	public ResponseEntity<ResponseDTO> handleEmployeePayrollException(BooksException exception) {
 		ResponseDTO responseDTO = new ResponseDTO(message, exception.getMessage());
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<ResponseDTO> handleHttpMessageNotReadableException(
 			HttpMessageNotReadableException exception) {
 		ResponseDTO responseDTO = new ResponseDTO(message, "Should have date in the format dd MMM yyyy");
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<ResponseDTO> handleDuplicateData(DataIntegrityViolationException exception) {
 		ResponseDTO responseDTO = new ResponseDTO(message, "Duplicate data for the field");

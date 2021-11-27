@@ -18,10 +18,10 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 
 	@Autowired
 	CustomerRepository customerRepository;
-	
+
 	@Autowired
 	AddressRepository addressRepository;
-	
+
 	@Override
 	public Customer signUpCustomer(SignUpDTO signUpDTO) {
 		Customer customerData = new Customer(signUpDTO);
@@ -32,7 +32,12 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 	public Customer loginCustomer(LoginDTO loginDTO) {
 		return customerRepository.loginCustomer(loginDTO.getEmail(), loginDTO.getPassword());
 	}
-	
+
+	@Override
+	public Customer getPassword(String email) {
+		return customerRepository.getPassword(email);
+	}
+
 	@Override
 	public Customer getCustomerById(int customerId) {
 		return customerRepository.findById(customerId).orElseThrow(() -> new BooksException("Customer Not Found"));
@@ -54,6 +59,5 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 		addressData.updateAddress(customerId, addressDTO);
 		return addressRepository.save(addressData);
 	}
-
 
 }
