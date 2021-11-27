@@ -19,7 +19,7 @@ import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 import com.bridgelabz.bookstorebackend.service.OrderServiceIF;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/bookstore/order")
 public class OrderController {
 
 	@Autowired
