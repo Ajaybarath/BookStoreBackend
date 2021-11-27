@@ -41,7 +41,7 @@ public class CustomerController {
 		ResponseDTO responseDTO = new ResponseDTO("Logged In", customerData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/get")
 	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("customerId") int customerId) {
 		Customer customerData = null;
@@ -49,7 +49,7 @@ public class CustomerController {
 		ResponseDTO responseDTO = new ResponseDTO("Customer Found", customerData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/forgotPassword")
 	public ResponseEntity<ResponseDTO> getPassword(@RequestBody String email) {
 		Customer customerData = null;
@@ -66,7 +66,7 @@ public class CustomerController {
 		ResponseDTO responseDTO = new ResponseDTO("Address Added", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/updateAddress")
 	public ResponseEntity<ResponseDTO> updateAddress(@RequestBody AddressDTO addressDTO,
 			@RequestHeader("customerId") int customerId) {

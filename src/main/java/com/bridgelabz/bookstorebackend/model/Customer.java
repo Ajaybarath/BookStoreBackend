@@ -22,11 +22,11 @@ public @Data class Customer {
 	private int customerId;
 
 	private String fullName;
-	
-	@Column(unique=true)
+
+	@Column(unique = true)
 	private String phoneNumber;
-	
-	@Column(unique=true)
+
+	@Column(unique = true)
 	private String email;
 	private String password;
 
@@ -40,7 +40,7 @@ public @Data class Customer {
 		this.email = signUpDTO.getEmail();
 		this.password = signUpDTO.getPassword();
 	}
-	
+
 	public Customer(LoginDTO loginDTO) {
 		this.email = loginDTO.getEmail();
 		this.password = loginDTO.getPassword();

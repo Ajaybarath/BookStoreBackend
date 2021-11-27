@@ -10,18 +10,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 public @Data class MyOrderDTO {
-	
-	@NotNull(message= "BookId Should Not be Empty")
+
+	@NotNull(message = "BookId Should Not be Empty")
 	public int bookId;
-	
-	@NotNull(message= "Cost Should Not be Empty")
+
+	@NotNull(message = "Cost Should Not be Empty")
 	public int totalCost;
-	
-	@NotNull(message= "Quantity Should Not be Empty")
+
+	@NotNull(message = "Quantity Should Not be Empty")
 	public int quantity;
-	
-	@JsonFormat(pattern="dd MMM yyyy")
-	@NotNull(message="Date Should Not be Empty")
+
+	@JsonFormat(pattern = "dd MMM yyyy")
+	@NotNull(message = "Date Should Not be Empty")
 	@PastOrPresent(message = "Date should be past or todays date")
 	public LocalDate orderDate;
 }

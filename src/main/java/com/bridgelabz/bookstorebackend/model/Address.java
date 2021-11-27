@@ -32,7 +32,7 @@ public @Data class Address {
 		this.state = addressDTO.getState();
 		this.addressType = addressDTO.getAddressType();
 	}
-	
+
 	public void updateAddress(int customerId, AddressDTO addressDTO) {
 		this.customerId = customerId;
 		this.address = addressDTO.getAddress();
