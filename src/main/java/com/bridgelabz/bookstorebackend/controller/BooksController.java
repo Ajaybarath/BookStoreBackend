@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/bookstore/books")
 public class BooksController {
 
     @Autowired
@@ -46,14 +47,6 @@ public class BooksController {
         Books books = null;
         books = booksService.updateBookDetail(id, bookDTO);
         ResponseDTO responseDTO = new ResponseDTO("Updated book dto", books);
-        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
-    }
-
-    @PutMapping("/update/{id}/qty/{qty}")
-    public ResponseEntity<ResponseDTO> updateBookQuantity(@PathVariable("id") int id, @PathVariable("qty") int qty) {
-        Books books = null;
-        books = booksService.updateBookQuantity(id, qty);
-        ResponseDTO responseDTO = new ResponseDTO("Created book dto", books);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 

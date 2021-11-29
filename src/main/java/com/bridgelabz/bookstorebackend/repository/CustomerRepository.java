@@ -3,13 +3,13 @@ package com.bridgelabz.bookstorebackend.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.bridgelabz.bookstorebackend.model.Customer;
+import com.bridgelabz.bookstorebackend.model.User;
 
-public interface CustomerRepository extends JpaRepository<Customer, Integer>{
+public interface CustomerRepository extends JpaRepository<User, Integer>{
 
 	@Query(value = "SELECT * FROM customer WHERE email = :email AND password = :password", nativeQuery = true)
-	Customer loginCustomer(String email, String password);
+    User loginCustomer(String email, String password);
 
 	@Query(value = "SELECT * FROM customer WHERE email = :email", nativeQuery = true)
-	Customer getPassword(String email);
+    User getPassword(String email);
 }

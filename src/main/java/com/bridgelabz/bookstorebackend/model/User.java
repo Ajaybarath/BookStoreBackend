@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "customer")
-public @Data class Customer {
+public @Data class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,18 +30,18 @@ public @Data class Customer {
 	private String email;
 	private String password;
 
-	public Customer() {
+	public User() {
 
 	}
 
-	public Customer(SignUpDTO signUpDTO) {
+	public User(SignUpDTO signUpDTO) {
 		this.fullName = signUpDTO.getFullName();
 		this.phoneNumber = signUpDTO.getPhoneNumber();
 		this.email = signUpDTO.getEmail();
 		this.password = signUpDTO.getPassword();
 	}
 
-	public Customer(LoginDTO loginDTO) {
+	public User(LoginDTO loginDTO) {
 		this.email = loginDTO.getEmail();
 		this.password = loginDTO.getPassword();
 	}

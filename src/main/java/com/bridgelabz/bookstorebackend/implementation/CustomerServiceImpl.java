@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.bookstorebackend.model.Address;
-import com.bridgelabz.bookstorebackend.model.Customer;
+import com.bridgelabz.bookstorebackend.model.User;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
 import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
@@ -23,23 +23,23 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 	AddressRepository addressRepository;
 
 	@Override
-	public Customer signUpCustomer(SignUpDTO signUpDTO) {
-		Customer customerData = new Customer(signUpDTO);
-		return customerRepository.save(customerData);
+	public User signUpCustomer(SignUpDTO signUpDTO) {
+		User userData = new User(signUpDTO);
+		return customerRepository.save(userData);
 	}
 
 	@Override
-	public Customer loginCustomer(LoginDTO loginDTO) {
+	public User loginCustomer(LoginDTO loginDTO) {
 		return customerRepository.loginCustomer(loginDTO.getEmail(), loginDTO.getPassword());
 	}
 
 	@Override
-	public Customer getPassword(String email) {
+	public User getPassword(String email) {
 		return customerRepository.getPassword(email);
 	}
 
 	@Override
-	public Customer getCustomerById(int customerId) {
+	public User getCustomerById(int customerId) {
 		return customerRepository.findById(customerId).orElseThrow(() -> new BooksException("Customer Not Found"));
 	}
 
