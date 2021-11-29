@@ -24,6 +24,8 @@ class Books {
     String details;
     String author;
     int quantity;
+    double rating;
+    int noOfRating;
 
     @ElementCollection
     @CollectionTable(name = "bookImage", joinColumns = @JoinColumn(name = "imageId"))
@@ -51,6 +53,11 @@ class Books {
         this.mrp = bookDTO.getMrp();
         this.quantity = bookDTO.getQuantity();
         this.imageUrl = bookDTO.getImageUrl();
+    }
+
+    public void updateRating(double rating, int noOfRating) {
+        this.noOfRating = noOfRating;
+        this.rating = rating;
     }
 
     public void updateQuantity(int qty) {

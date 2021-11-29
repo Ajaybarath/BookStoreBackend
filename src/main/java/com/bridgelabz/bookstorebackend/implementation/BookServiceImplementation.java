@@ -51,4 +51,12 @@ public class BookServiceImplementation implements BooksService {
         books.updateQuantity(qty);
         return booksRepository.save(books);
     }
+
+    @Override
+    public Books updateRating(int id, double rating, int noOfRating) {
+        Books books = this.getBookDataById(id);
+        books.updateRating(rating, noOfRating);
+        return booksRepository.save(books);
+    }
+
 }

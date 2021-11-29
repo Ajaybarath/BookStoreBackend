@@ -17,4 +17,6 @@ public interface BooksService {
     Books updateBookDetail(int id, BookDTO bookDTO);
 
     Books updateBookQuantity(int id, int qty);
+
+    Books updateRating(int id, double rating, int noOfRating);
 }
