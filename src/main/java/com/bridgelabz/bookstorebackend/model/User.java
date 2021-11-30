@@ -19,7 +19,7 @@ public @Data class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
-	private int customerId;
+	private int userId;
 
 	private String fullName;
 
