@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderServiceIF {
 	}
 
 	@Override
-	public Object getBookWithOrders(int userId) {
+	public List<Object> getBookWithOrders(int userId) {
 		return orderRepository.getBookWithOrder(userId);
 	}
 }

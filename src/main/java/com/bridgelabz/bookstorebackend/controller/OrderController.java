@@ -37,7 +37,7 @@ public class OrderController {
 
 	@GetMapping("/getBookWithOrder")
 	public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("userId") int userId) {
-		Object myOrderData = orderService.getBookWithOrders(userId);
+		List<Object> myOrderData = orderService.getBookWithOrders(userId);
 		ResponseDTO responseDTO = new ResponseDTO("Order Along with Book", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}

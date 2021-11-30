@@ -11,6 +11,6 @@ public interface OrderServiceIF {
 
 	MyOrder createOrders(int userId, MyOrderDTO myOrderDTO);
 
-	Object getBookWithOrders(int userId);
+	List<Object> getBookWithOrders(int userId);
 
 }
