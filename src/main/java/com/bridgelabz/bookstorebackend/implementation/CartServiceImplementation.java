@@ -1,5 +1,6 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
+import com.bridgelabz.bookstorebackend.dto.CartDTO;
 import com.bridgelabz.bookstorebackend.model.Books;
 import com.bridgelabz.bookstorebackend.model.Cart;
 import com.bridgelabz.bookstorebackend.dto.CartItemDTO;
@@ -9,6 +10,9 @@ import com.bridgelabz.bookstorebackend.service.BooksService;
 import com.bridgelabz.bookstorebackend.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CartServiceImplementation implements CartService {
@@ -46,7 +50,12 @@ public class CartServiceImplementation implements CartService {
     }
 
     @Override
-    public Cart getCartItemList(int userID) {
-        return cartRepository.findByUserId(userID);
+    public List<CartDTO> getCartItemList(int userID) {
+        Cart cart = cartRepository.findByUserId(userID);
+        List<CartDTO> cartItems = new ArrayList<>();
+        cart.getCartItems().forEach(bk -> {
+            cartItems.add(new CartDTO(booksService.getBookDataById(bk.getBookId()), bk.getQuantity(), bk.getTotal()));
+        });
+        return cartItems;
     }
 }
