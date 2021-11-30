@@ -22,22 +22,22 @@ public class OrderController {
 
 	@PostMapping("/createOrders")
 	public ResponseEntity<ResponseDTO> createlOrders(@RequestBody MyOrderDTO myOrderDTO,
-			@RequestHeader("customerId") int customerId) {
-		MyOrder myOrderData = orderService.createOrders(customerId, myOrderDTO);
+			@RequestHeader("userId") int userId) {
+		MyOrder myOrderData = orderService.createOrders(userId, myOrderDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Order Created", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/getOrders")
-	public ResponseEntity<ResponseDTO> getAllOrders(@RequestHeader("customerId") int customerId) {
-		List<MyOrder> myOrderData = orderService.getOrders(customerId);
+	public ResponseEntity<ResponseDTO> getAllOrders(@RequestHeader("userId") int userId) {
+		List<MyOrder> myOrderData = orderService.getOrders(userId);
 		ResponseDTO responseDTO = new ResponseDTO("My Orders", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/getBookWithOrder")
-	public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("customerId") int customerId) {
-		Object myOrderData = orderService.getBookWithOrders(customerId);
+	public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("userId") int userId) {
+		List<Object> myOrderData = orderService.getBookWithOrders(userId);
 		ResponseDTO responseDTO = new ResponseDTO("Order Along with Book", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}

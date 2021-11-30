@@ -17,19 +17,19 @@ public class OrderServiceImpl implements OrderServiceIF {
 	OrderRepository orderRepository;
 
 	@Override
-	public List<MyOrder> getOrders(int customerId) {
-		return orderRepository.getOrderByCustomerId(customerId);
+	public List<MyOrder> getOrders(int userId) {
+		return orderRepository.getOrderByCustomerId(userId);
 	}
 
 	@Override
-	public MyOrder createOrders(int customerId, MyOrderDTO myOrderDTO) {
-		MyOrder myOrderData = new MyOrder(customerId, myOrderDTO);
+	public MyOrder createOrders(int userId, MyOrderDTO myOrderDTO) {
+		MyOrder myOrderData = new MyOrder(userId, myOrderDTO);
 		return orderRepository.save(myOrderData);
 
 	}
 
 	@Override
-	public Object getBookWithOrders(int customerId) {
-		return orderRepository.getBookWithOrder(customerId);
+	public List<Object> getBookWithOrders(int userId) {
+		return orderRepository.getBookWithOrder(userId);
 	}
 }

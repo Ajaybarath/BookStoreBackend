@@ -7,9 +7,9 @@ import com.bridgelabz.bookstorebackend.model.User;
 
 public interface CustomerRepository extends JpaRepository<User, Integer>{
 
-	@Query(value = "SELECT * FROM customer WHERE email = :email AND password = :password", nativeQuery = true)
+	@Query(value = "SELECT * FROM user WHERE email = :email AND password = :password", nativeQuery = true)
     User loginCustomer(String email, String password);
 
-	@Query(value = "SELECT * FROM customer WHERE email = :email", nativeQuery = true)
+	@Query(value = "SELECT * FROM user WHERE email = :email", nativeQuery = true)
     User getPassword(String email);
 }

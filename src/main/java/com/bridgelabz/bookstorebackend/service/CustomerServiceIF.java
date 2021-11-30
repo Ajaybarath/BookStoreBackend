@@ -12,11 +12,11 @@ public interface CustomerServiceIF {
 
 	User loginCustomer(LoginDTO loginDTO);
 
-	User getCustomerById(int customerId);
+	User getCustomerById(int userId);
 
-	Address addAddress(int customerId, AddressDTO addressDTO);
+	Address addAddress(int userId, AddressDTO addressDTO);
 
-	Address updateAddress(int customerId, AddressDTO addressDTO);
+	Address updateAddress(int userId, AddressDTO addressDTO);
 
 	User getPassword(String email);
 

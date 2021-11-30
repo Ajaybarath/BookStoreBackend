@@ -15,7 +15,7 @@ import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping("/bookstore/customer")
+@RequestMapping("/bookstore/user")
 public class CustomerController {
 
 	@Autowired
@@ -38,10 +38,10 @@ public class CustomerController {
 	}
 
 	@GetMapping("/get")
-	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("customerId") int customerId) {
+	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("userId") int userId) {
 		User userData = null;
-		userData = customerService.getCustomerById(customerId);
-		ResponseDTO responseDTO = new ResponseDTO("Customer Found", userData);
+		userData = customerService.getCustomerById(userId);
+		ResponseDTO responseDTO = new ResponseDTO("User Found", userData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
@@ -49,24 +49,24 @@ public class CustomerController {
 	public ResponseEntity<ResponseDTO> getPassword(@RequestBody String email) {
 		User userData = null;
 		userData = customerService.getPassword(email);
-		ResponseDTO responseDTO = new ResponseDTO("Customer Details", userData);
+		ResponseDTO responseDTO = new ResponseDTO("User Details", userData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@PostMapping("/createAddress")
 	public ResponseEntity<ResponseDTO> addAddress(@RequestBody AddressDTO addressDTO,
-			@RequestHeader("customerId") int customerId) {
+			@RequestHeader("userId") int userId) {
 		Address addressData = null;
-		addressData = customerService.addAddress(customerId, addressDTO);
+		addressData = customerService.addAddress(userId, addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Address Added", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@PutMapping("/updateAddress")
 	public ResponseEntity<ResponseDTO> updateAddress(@RequestBody AddressDTO addressDTO,
-			@RequestHeader("customerId") int customerId) {
+			@RequestHeader("userId") int userId) {
 		Address addressData = null;
-		addressData = customerService.updateAddress(customerId, addressDTO);
+		addressData = customerService.updateAddress(userId, addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Address Updated", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
