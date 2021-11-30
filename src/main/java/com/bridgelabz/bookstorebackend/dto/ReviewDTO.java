@@ -11,5 +11,6 @@ class ReviewDTO {
     int bookId;
     int rating;
     String review;
+    String name;
 
 }
