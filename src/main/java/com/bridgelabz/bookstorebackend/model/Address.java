@@ -14,8 +14,8 @@ import lombok.Data;
 public @Data class Address {
 
 	@Id
-	@JoinColumn(name = "customer.customer_id")
-	private int customerId;
+	@JoinColumn(name = "user.user_id")
+	private int userId;
 	private String address;
 	private String city;
 	private String state;
@@ -25,16 +25,16 @@ public @Data class Address {
 
 	}
 
-	public Address(int customerId, AddressDTO addressDTO) {
-		this.customerId = customerId;
+	public Address(int userId, AddressDTO addressDTO) {
+		this.userId = userId;
 		this.address = addressDTO.getAddress();
 		this.city = addressDTO.getCity();
 		this.state = addressDTO.getState();
 		this.addressType = addressDTO.getAddressType();
 	}
 
-	public void updateAddress(int customerId, AddressDTO addressDTO) {
-		this.customerId = customerId;
+	public void updateAddress(int userId, AddressDTO addressDTO) {
+		this.userId = userId;
 		this.address = addressDTO.getAddress();
 		this.city = addressDTO.getCity();
 		this.state = addressDTO.getState();

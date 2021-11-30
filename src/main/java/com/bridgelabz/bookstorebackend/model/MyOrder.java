@@ -23,8 +23,8 @@ public @Data class MyOrder {
 	@Column(name = "order_id")
 	private int orderId;
 
-	@JoinColumn(name = "customer.customer_id")
-	private int customerId;
+	@JoinColumn(name = "user.user_id")
+	private int userId;
 
 	@JoinColumn(name = "books.book_id")
 	private int bookId;
@@ -39,8 +39,8 @@ public @Data class MyOrder {
 
 	}
 
-	public MyOrder(int customerId, MyOrderDTO myOrderDTO) {
-		this.customerId = customerId;
+	public MyOrder(int userId, MyOrderDTO myOrderDTO) {
+		this.userId = userId;
 		this.bookId = myOrderDTO.getBookId();
 		this.totalCost = myOrderDTO.getTotalCost();
 		this.quantity = myOrderDTO.getQuantity();

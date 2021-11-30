@@ -39,24 +39,24 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 	}
 
 	@Override
-	public User getCustomerById(int customerId) {
-		return customerRepository.findById(customerId).orElseThrow(() -> new BooksException("Customer Not Found"));
+	public User getCustomerById(int userId) {
+		return customerRepository.findById(userId).orElseThrow(() -> new BooksException("User Not Found"));
 	}
 
-	public Address getAddressById(int customerId, String addressType) {
-		return addressRepository.getAddress(customerId, addressType);
+	public Address getAddressById(int userId, String addressType) {
+		return addressRepository.getAddress(userId, addressType);
 	}
 
 	@Override
-	public Address addAddress(int customerId, AddressDTO addressDTO) {
-		Address addressData = new Address(customerId, addressDTO);
+	public Address addAddress(int userId, AddressDTO addressDTO) {
+		Address addressData = new Address(userId, addressDTO);
 		return addressRepository.save(addressData);
 	}
 
 	@Override
-	public Address updateAddress(int customerId, AddressDTO addressDTO) {
-		Address addressData = this.getAddressById(customerId, addressDTO.getAddressType());
-		addressData.updateAddress(customerId, addressDTO);
+	public Address updateAddress(int userId, AddressDTO addressDTO) {
+		Address addressData = this.getAddressById(userId, addressDTO.getAddressType());
+		addressData.updateAddress(userId, addressDTO);
 		return addressRepository.save(addressData);
 	}
 

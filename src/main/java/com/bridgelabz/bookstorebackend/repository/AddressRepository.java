@@ -7,6 +7,6 @@ import com.bridgelabz.bookstorebackend.model.Address;
 
 public interface AddressRepository extends JpaRepository<Address, Integer>{
 
-	@Query(value = "SELECT * FROM address WHERE customer_id = :customerId AND address_type = :addressType", nativeQuery = true)
-	Address getAddress(int customerId, String addressType);
+	@Query(value = "SELECT * FROM address WHERE user_id = :userId AND address_type = :addressType", nativeQuery = true)
+	Address getAddress(int userId, String addressType);
 }

@@ -7,10 +7,10 @@ import com.bridgelabz.bookstorebackend.dto.MyOrderDTO;
 
 public interface OrderServiceIF {
 
-	List<MyOrder> getOrders(int customerId);
+	List<MyOrder> getOrders(int userId);
 
-	MyOrder createOrders(int customerId, MyOrderDTO myOrderDTO);
+	MyOrder createOrders(int userId, MyOrderDTO myOrderDTO);
 
-	Object getBookWithOrders(int customerId);
+	Object getBookWithOrders(int userId);
 
 }

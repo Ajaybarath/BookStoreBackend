@@ -13,12 +13,12 @@ import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
 import lombok.Data;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "user")
 public @Data class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "customer_id")
+	@Column(name = "user_id")
 	private int customerId;
 
 	private String fullName;
