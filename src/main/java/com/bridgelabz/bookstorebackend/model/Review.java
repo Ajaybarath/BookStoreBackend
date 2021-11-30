@@ -21,12 +21,14 @@ class Review {
     int bookId;
     int rating;
     String review;
+    String name;
 
     public Review(ReviewDTO reviewDTO) {
         this.userId = reviewDTO.getUserId();
         this.bookId = reviewDTO.getBookId();
         this.rating = reviewDTO.getRating();
         this.review = reviewDTO.getReview();
+        this.name = reviewDTO.getName();
     }
 
     public Review() {

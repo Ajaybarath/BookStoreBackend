@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.bridgelabz.bookstorebackend.model.BookAndOrder;
 import com.bridgelabz.bookstorebackend.model.MyOrder;
 import com.bridgelabz.bookstorebackend.dto.MyOrderDTO;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
@@ -37,7 +38,7 @@ public class OrderController {
 
 	@GetMapping("/getBookWithOrder")
 	public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("userId") int userId) {
-		List<Object> myOrderData = orderService.getBookWithOrders(userId);
+		List<BookAndOrder> myOrderData = orderService.getBookWithOrders(userId);
 		ResponseDTO responseDTO = new ResponseDTO("Order Along with Book", myOrderData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}

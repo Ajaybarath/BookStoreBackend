@@ -1,5 +1,6 @@
 package com.bridgelabz.bookstorebackend.controller;
 
+import com.bridgelabz.bookstorebackend.dto.CartDTO;
 import com.bridgelabz.bookstorebackend.model.Cart;
 import com.bridgelabz.bookstorebackend.dto.CartItemDTO;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @CrossOrigin(origins = "http://localhost:3000/")
@@ -20,7 +23,7 @@ public class CartController {
 
     @GetMapping("/{userID}/get")
     public ResponseEntity<ResponseDTO> getCartItemsList(@PathVariable("userID") int userID) {
-        Cart cart = cartService.getCartItemList(userID);
+        List<CartDTO> cart = cartService.getCartItemList(userID);
         ResponseDTO responseDTO = new ResponseDTO("Getting cart items", cart);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
