@@ -14,26 +14,28 @@ public @Data class BookAndOrder {
 	private String author;
 	private double rating;
 	private int noOfRating;
-    private int orderId;
-    private int userId;
+	private String imageUrl;
+	private int orderId;
+	private int userId;
 	private int totalCost;
 	private int quantity;
 	private LocalDate orderDate;
-	
+
 	public BookAndOrder(Books books, MyOrder myOrder) {
 		this.bookId = books.getId();
-		this.name =  books.getName();
+		this.name = books.getName();
 		this.price = books.getPrice();
 		this.mrp = books.getMrp();
-		this.details= books.getDetails();
-		this.author=books.getAuthor();
-		this.rating=books.getRating();
-		this.noOfRating=books.getNoOfRating();
-		this.orderId=myOrder.getOrderId();
-		this.userId=myOrder.getUserId();
-		this.totalCost=myOrder.getTotalCost();
-		this.quantity=myOrder.getQuantity();
-		this.orderDate=myOrder.getOrderDate();
+		this.details = books.getDetails();
+		this.author = books.getAuthor();
+		this.rating = books.getRating();
+		this.noOfRating = books.getNoOfRating();
+		this.imageUrl = books.getImageUrl();
+		this.orderId = myOrder.getOrderId();
+		this.userId = myOrder.getUserId();
+		this.totalCost = myOrder.getTotalCost();
+		this.quantity = myOrder.getQuantity();
+		this.orderDate = myOrder.getOrderDate();
 	}
 
 }
