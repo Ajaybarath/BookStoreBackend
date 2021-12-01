@@ -26,11 +26,7 @@ class Books {
     int quantity;
     double rating;
     int noOfRating;
-
-    @ElementCollection
-    @CollectionTable(name = "bookImage", joinColumns = @JoinColumn(name = "imageId"))
-    @Column(name = "imageUrl")
-    List<String> imageUrl;
+    String imageUrl;
 
     public Books() {
     }

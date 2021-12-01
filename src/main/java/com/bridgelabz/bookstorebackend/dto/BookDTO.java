@@ -16,6 +16,6 @@ class BookDTO {
     String details;
     String author;
     int quantity;
-    List<String> imageUrl;
+    String imageUrl;
 
 }
