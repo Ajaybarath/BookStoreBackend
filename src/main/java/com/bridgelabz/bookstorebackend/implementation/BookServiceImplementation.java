@@ -13,50 +13,50 @@ import java.util.List;
 @Service
 public class BookServiceImplementation implements BooksService {
 
-    @Autowired
-    BooksRepository booksRepository;
+	@Autowired
+	BooksRepository booksRepository;
 
-    @Override
-    public Books createBook(BookDTO bookDTO) {
-        Books books = new Books(bookDTO);
-        return booksRepository.save(books);
-    }
+	@Override
+	public Books createBook(BookDTO bookDTO) {
+		Books books = new Books(bookDTO);
+		return booksRepository.save(books);
+	}
 
-    @Override
-    public Books getBookDataById(int id) {
-        return booksRepository.findById(id).orElseThrow(() -> new BooksException("Books not found"));
-    }
+	@Override
+	public Books getBookDataById(int id) {
+		return booksRepository.findById(id).orElseThrow(() -> new BooksException("Books not found"));
+	}
 
-    @Override
-    public List<Books> getAllBooksData() {
-        return booksRepository.findAll();
-    }
+	@Override
+	public List<Books> getAllBooksData() {
+		return booksRepository.findAll();
+	}
 
-    @Override
-    public void deteleBookDataById(int id) {
-        Books books = this.getBookDataById(id);
-        booksRepository.delete(books);
-    }
+	@Override
+	public void deteleBookDataById(int id) {
+		Books books = this.getBookDataById(id);
+		booksRepository.delete(books);
+	}
 
-    @Override
-    public Books updateBookDetail(int id, BookDTO bookDTO) {
-        Books books = this.getBookDataById(id);
-        books.update(bookDTO);
-        return booksRepository.save(books);
-    }
+	@Override
+	public Books updateBookDetail(int id, BookDTO bookDTO) {
+		Books books = this.getBookDataById(id);
+		books.update(bookDTO);
+		return booksRepository.save(books);
+	}
 
-    @Override
-    public Books updateBookQuantity(int id, int qty) {
-        Books books = this.getBookDataById(id);
-        books.updateQuantity(qty);
-        return booksRepository.save(books);
-    }
+	@Override
+	public Books updateBookQuantity(int id, int qty) {
+		Books books = this.getBookDataById(id);
+		books.updateQuantity(qty);
+		return booksRepository.save(books);
+	}
 
-    @Override
-    public Books updateRating(int id, double rating, int noOfRating) {
-        Books books = this.getBookDataById(id);
-        books.updateRating(rating, noOfRating);
-        return booksRepository.save(books);
-    }
+	@Override
+	public Books updateRating(int id, double rating, int noOfRating) {
+		Books books = this.getBookDataById(id);
+		books.updateRating(rating, noOfRating);
+		return booksRepository.save(books);
+	}
 
 }
