@@ -28,6 +28,14 @@ public class CustomerController {
 		ResponseDTO responseDTO = new ResponseDTO("Signed Up", userData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
+	
+	@PutMapping("/editDetails")
+	public ResponseEntity<ResponseDTO> editPersonalDetails(@RequestBody SignUpDTO signUpDTO, @RequestHeader("userId") int userId) {
+		User userData = null;
+		userData = customerService.editPersonalDetails(signUpDTO, userId);
+		ResponseDTO responseDTO = new ResponseDTO("User Details Updated", userData);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
 
 	@PostMapping("/login")
 	public ResponseEntity<ResponseDTO> loginCustomer(@RequestBody LoginDTO loginDTO) {

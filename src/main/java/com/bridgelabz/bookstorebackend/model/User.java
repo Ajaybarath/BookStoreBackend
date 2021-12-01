@@ -45,4 +45,12 @@ public @Data class User {
 		this.email = loginDTO.getEmail();
 		this.password = loginDTO.getPassword();
 	}
+	
+	public void updateDetails(SignUpDTO signUpDTO, int userId) {
+		this.userId = userId;
+		this.fullName = signUpDTO.getFullName();
+		this.phoneNumber = signUpDTO.getPhoneNumber();
+		this.email = signUpDTO.getEmail();
+		this.password = signUpDTO.getPassword();
+	}
 }
