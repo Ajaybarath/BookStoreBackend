@@ -20,4 +20,6 @@ public interface CustomerServiceIF {
 
 	User getPassword(String email);
 
+	User editPersonalDetails(SignUpDTO signUpDTO, int userId);
+
 }
