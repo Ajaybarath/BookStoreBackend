@@ -7,9 +7,11 @@ import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public @Data class MyOrderDTO {
+public @Data
+@AllArgsConstructor class MyOrderDTO {
 
 	@NotNull(message = "BookId Should Not be Empty")
 	public int bookId;
@@ -24,4 +26,5 @@ public @Data class MyOrderDTO {
 	@NotNull(message = "Date Should Not be Empty")
 	@PastOrPresent(message = "Date should be past or todays date")
 	public LocalDate orderDate;
+
 }
