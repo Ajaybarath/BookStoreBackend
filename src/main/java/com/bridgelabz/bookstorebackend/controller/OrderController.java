@@ -18,28 +18,27 @@ import com.bridgelabz.bookstorebackend.service.OrderServiceIF;
 @RequestMapping("/bookstore/order")
 public class OrderController {
 
-	@Autowired
-	OrderServiceIF orderService;
+    @Autowired
+    OrderServiceIF orderService;
 
-	@PostMapping("/createOrders")
-	public ResponseEntity<ResponseDTO> createlOrders(@RequestBody MyOrderDTO myOrderDTO,
-			@RequestHeader("userId") int userId) {
-		MyOrder myOrderData = orderService.createOrders(userId, myOrderDTO);
-		ResponseDTO responseDTO = new ResponseDTO("Order Created", myOrderData);
-		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
-	}
+    @PostMapping("/createOrders/{userId}")
+    public ResponseEntity<ResponseDTO> createlOrders(@PathVariable("userId") int userId) {
+        String myOrderData = orderService.createOrders(userId);
+        ResponseDTO responseDTO = new ResponseDTO("Order Created", myOrderData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
 
-	@GetMapping("/getOrders")
-	public ResponseEntity<ResponseDTO> getAllOrders(@RequestHeader("userId") int userId) {
-		List<MyOrder> myOrderData = orderService.getOrders(userId);
-		ResponseDTO responseDTO = new ResponseDTO("My Orders", myOrderData);
-		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
-	}
+    @GetMapping("/getOrders")
+    public ResponseEntity<ResponseDTO> getAllOrders(@RequestHeader("userId") int userId) {
+        List<MyOrder> myOrderData = orderService.getOrders(userId);
+        ResponseDTO responseDTO = new ResponseDTO("My Orders", myOrderData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
 
-	@GetMapping("/getBookWithOrder")
-	public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("userId") int userId) {
-		List<BookAndOrder> myOrderData = orderService.getBookWithOrders(userId);
-		ResponseDTO responseDTO = new ResponseDTO("Order Along with Book", myOrderData);
-		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
-	}
+    @GetMapping("/getBookWithOrder")
+    public ResponseEntity<ResponseDTO> getBookWithOrders(@RequestHeader("userId") int userId) {
+        List<BookAndOrder> myOrderData = orderService.getBookWithOrders(userId);
+        ResponseDTO responseDTO = new ResponseDTO("Order Along with Book", myOrderData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
 }
