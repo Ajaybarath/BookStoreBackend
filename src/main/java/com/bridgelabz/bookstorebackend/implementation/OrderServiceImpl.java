@@ -1,8 +1,14 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bridgelabz.bookstorebackend.dto.CartDTO;
+import com.bridgelabz.bookstorebackend.dto.CartItemDTO;
+import com.bridgelabz.bookstorebackend.model.Cart;
+import com.bridgelabz.bookstorebackend.repository.CartRepository;
+import com.bridgelabz.bookstorebackend.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +30,9 @@ public class OrderServiceImpl implements OrderServiceIF {
 	
 	@Autowired
 	BooksRepository booksRepository;
+
+	@Autowired
+	CartService cartService;
 	
 	@Autowired
 	BooksService booksService;
@@ -34,9 +43,13 @@ public class OrderServiceImpl implements OrderServiceIF {
 	}
 
 	@Override
-	public MyOrder createOrders(int userId, MyOrderDTO myOrderDTO) {
-		MyOrder myOrderData = new MyOrder(userId, myOrderDTO);
-		return orderRepository.save(myOrderData);
+	public String createOrders(int userId) {
+		List<CartDTO> cartList = cartService.getCartItemList(userId);
+		cartList.forEach((cartItem) -> {
+			orderRepository.save(new MyOrder(userId, new MyOrderDTO(cartItem.getBooks().getId(), cartItem.getTotal(), cartItem.getQuantity(), LocalDate.now())));
+			cartService.removeItemFromCart(userId, new CartItemDTO(userId, cartItem.getBooks().getId(), cartItem.getQuantity()));
+		});
+		return "Order place successfully";
 
 	}
 

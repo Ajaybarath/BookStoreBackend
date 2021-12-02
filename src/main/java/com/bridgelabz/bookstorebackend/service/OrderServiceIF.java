@@ -10,7 +10,7 @@ public interface OrderServiceIF {
 
 	List<MyOrder> getOrders(int userId);
 
-	MyOrder createOrders(int userId, MyOrderDTO myOrderDTO);
+	String createOrders(int userId);
 
 	List<BookAndOrder> getBookWithOrders(int userId);
 
