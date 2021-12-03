@@ -4,6 +4,8 @@ import com.bridgelabz.bookstorebackend.dto.BookDTO;
 import lombok.Data;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +26,7 @@ public @Data @ToString class Books {
 	double rating;
 	int noOfRating;
 	String imageUrl;
+	LocalDate createDate;
 
 	public Books() {
 	}
@@ -36,6 +39,7 @@ public @Data @ToString class Books {
 		this.mrp = bookDTO.getMrp();
 		this.quantity = bookDTO.getQuantity();
 		this.imageUrl = bookDTO.getImageUrl();
+		this.createDate=bookDTO.getCreateDate();
 	}
 
 	public void update(BookDTO bookDTO) {
@@ -46,6 +50,7 @@ public @Data @ToString class Books {
 		this.mrp = bookDTO.getMrp();
 		this.quantity = bookDTO.getQuantity();
 		this.imageUrl = bookDTO.getImageUrl();
+		this.createDate=bookDTO.getCreateDate();
 	}
 
 	public void updateRating(double rating, int noOfRating) {
