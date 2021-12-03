@@ -2,6 +2,9 @@ package com.bridgelabz.bookstorebackend.service;
 
 import com.bridgelabz.bookstorebackend.model.Address;
 import com.bridgelabz.bookstorebackend.model.User;
+
+import java.util.List;
+
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
 import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
@@ -21,5 +24,7 @@ public interface CustomerServiceIF {
 	User getPassword(String email);
 
 	User editPersonalDetails(SignUpDTO signUpDTO, int userId);
+
+	List<Address> getAddress(int userId);
 
 }

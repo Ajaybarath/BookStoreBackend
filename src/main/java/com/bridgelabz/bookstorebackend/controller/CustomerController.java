@@ -1,5 +1,7 @@
 package com.bridgelabz.bookstorebackend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +69,14 @@ public class CustomerController {
 		Address addressData = null;
 		addressData = customerService.addAddress(userId, addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Address Added", addressData);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getAddress")
+	public ResponseEntity<ResponseDTO> getAddress(@RequestHeader("userId") int userId) {
+		List<Address> addressData = null;
+		addressData = customerService.getAddress(userId);
+		ResponseDTO responseDTO = new ResponseDTO("Address Found", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 

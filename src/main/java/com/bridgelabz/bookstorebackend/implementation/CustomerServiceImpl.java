@@ -1,5 +1,7 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,6 +67,12 @@ public class CustomerServiceImpl implements CustomerServiceIF {
 		User user = this.getCustomerById(userId);
 		user.updateDetails(signUpDTO, userId);
 		return customerRepository.save(user);
+	}
+
+	@Override
+	public List<Address> getAddress(int userId) {
+		List<Address> address= addressRepository.findAddressByUserId(userId);
+		return address;
 	}
 
 }
