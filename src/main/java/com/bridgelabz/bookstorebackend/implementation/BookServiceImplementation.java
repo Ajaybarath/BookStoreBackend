@@ -77,4 +77,10 @@ public class BookServiceImplementation implements BooksService {
 		return books;
 	}
 
+	@Override
+	public List<Books> sortByNewArival() {
+		List<Books> books = booksRepository.sortByNewArival();
+		return books;
+	}
+
 }

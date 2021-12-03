@@ -25,4 +25,6 @@ public interface BooksService {
 	List<Books> sortBooksByPriceHighToLow();
 
 	List<Books> getAllBooksByName(String name);
+
+	List<Books> sortByNewArival();
 }

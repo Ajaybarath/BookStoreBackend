@@ -17,4 +17,7 @@ public interface BooksRepository extends JpaRepository<Books, Integer> {
 
 	@Query(value = "SELECT * FROM books WHERE name LIKE %:name% or author LIKE %:name%", nativeQuery = true)
 	List<Books> getAllBooksByName(String name);
+
+	@Query(value = "SELECT * FROM books ORDER BY create_date DESC", nativeQuery = true)
+	List<Books> sortByNewArival();
 }

@@ -77,4 +77,11 @@ public class BooksController {
 		ResponseDTO responseDTO = new ResponseDTO("Books by name", books);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
+	
+	@GetMapping("/sort-by-arival")
+	public ResponseEntity<ResponseDTO> sortByNewArival() {
+		List<Books> books = booksService.sortByNewArival();
+		ResponseDTO responseDTO = new ResponseDTO("Books by name", books);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
 }
