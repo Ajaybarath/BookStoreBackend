@@ -59,4 +59,16 @@ public class BookServiceImplementation implements BooksService {
 		return booksRepository.save(books);
 	}
 
+	@Override
+	public List<Books> sortBooksByPriceLowToHigh() {
+		List<Books> sortedBooksByPrice = booksRepository.sortBooksByPriceLowToHigh();
+		return sortedBooksByPrice;
+	}
+
+	@Override
+	public List<Books> sortBooksByPriceHighToLow() {
+		List<Books> sortedBooksByPrice = booksRepository.sortBooksByPriceHighToLow();
+		return sortedBooksByPrice;
+	}
+
 }
