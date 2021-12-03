@@ -19,4 +19,10 @@ public interface BooksService {
     Books updateBookQuantity(int id, int qty);
 
     Books updateRating(int id, double rating, int noOfRating);
+
+	List<Books> sortBooksByPriceLowToHigh();
+
+	List<Books> sortBooksByPriceHighToLow();
+
+	List<Books> getAllBooksByName(String name);
 }
