@@ -70,4 +70,11 @@ public class BooksController {
 		ResponseDTO responseDTO = new ResponseDTO("Books by Descending order of its price", books);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
+	
+	@GetMapping("/get-book-by-name/{name}")
+	public ResponseEntity<ResponseDTO> getAllBooksByName(@PathVariable("name") String name) {
+		List<Books> books = booksService.getAllBooksByName(name);
+		ResponseDTO responseDTO = new ResponseDTO("Books by name", books);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
 }

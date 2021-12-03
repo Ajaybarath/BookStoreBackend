@@ -71,4 +71,10 @@ public class BookServiceImplementation implements BooksService {
 		return sortedBooksByPrice;
 	}
 
+	@Override
+	public List<Books> getAllBooksByName(String name) {
+		List<Books> books = booksRepository.getAllBooksByName(name);
+		return books;
+	}
+
 }
