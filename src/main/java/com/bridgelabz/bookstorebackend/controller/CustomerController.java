@@ -1,63 +1,62 @@
 package com.bridgelabz.bookstorebackend.controller;
 
+import com.bridgelabz.bookstorebackend.implementation.UserDetailServiceImpl;
+import com.bridgelabz.bookstorebackend.model.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.bridgelabz.bookstorebackend.model.Address;
-import com.bridgelabz.bookstorebackend.model.User;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
-import com.bridgelabz.bookstorebackend.service.CustomerServiceIF;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
-import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.ResponseDTO;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping("/bookstore/user")
+@RequestMapping("bookstore/user")
 public class CustomerController {
 
 	@Autowired
-	CustomerServiceIF customerService;
+	UserDetailServiceImpl customerService;
 
 	@PostMapping("/signup")
 	public ResponseEntity<ResponseDTO> signUpCustomer(@RequestBody SignUpDTO signUpDTO) {
-		User userData = null;
-		userData = customerService.signUpCustomer(signUpDTO);
-		ResponseDTO responseDTO = new ResponseDTO("Signed Up", userData);
+		ApplicationUser applicationUserData = null;
+		applicationUserData = customerService.signUpCustomer(signUpDTO);
+		ResponseDTO responseDTO = new ResponseDTO("Signed Up", applicationUserData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 	
 	@PutMapping("/editDetails")
 	public ResponseEntity<ResponseDTO> editPersonalDetails(@RequestBody SignUpDTO signUpDTO, @RequestHeader("userId") int userId) {
-		User userData = null;
-		userData = customerService.editPersonalDetails(signUpDTO, userId);
-		ResponseDTO responseDTO = new ResponseDTO("User Details Updated", userData);
+		ApplicationUser applicationUserData = null;
+		applicationUserData = customerService.editPersonalDetails(signUpDTO, userId);
+		ResponseDTO responseDTO = new ResponseDTO("User Details Updated", applicationUserData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
-	@PostMapping("/login")
-	public ResponseEntity<ResponseDTO> loginCustomer(@RequestBody LoginDTO loginDTO) {
-		User userData = null;
-		userData = customerService.loginCustomer(loginDTO);
+	@GetMapping("/getByEmail")
+	public ResponseEntity<ResponseDTO> getUserDataByEmail(@RequestHeader("email") String email) {
+		ApplicationUser userData = null;
+		userData = customerService.getUserDataByEmail(email);
 		ResponseDTO responseDTO = new ResponseDTO("Logged In", userData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/get")
 	public ResponseEntity<ResponseDTO> getCustomerById(@RequestHeader("userId") int userId) {
-		User userData = null;
-		userData = customerService.getCustomerById(userId);
-		ResponseDTO responseDTO = new ResponseDTO("User Found", userData);
+		ApplicationUser applicationUserData = null;
+		applicationUserData = customerService.getCustomerById(userId);
+		ResponseDTO responseDTO = new ResponseDTO("User Found", applicationUserData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 
 	@PostMapping("/forgotPassword")
 	public ResponseEntity<ResponseDTO> getPassword(@RequestBody String email) {
-		User userData = null;
-		userData = customerService.getPassword(email);
-		ResponseDTO responseDTO = new ResponseDTO("User Details", userData);
+		ApplicationUser applicationUserData = null;
+		applicationUserData = customerService.getPassword(email);
+		ResponseDTO responseDTO = new ResponseDTO("User Details", applicationUserData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 

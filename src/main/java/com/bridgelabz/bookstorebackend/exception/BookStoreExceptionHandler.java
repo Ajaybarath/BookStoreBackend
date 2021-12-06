@@ -3,6 +3,7 @@ package com.bridgelabz.bookstorebackend.exception;
 import java.util.stream.Collectors;
 import java.util.List;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,4 +48,11 @@ public class BookStoreExceptionHandler {
 		ResponseDTO responseDTO = new ResponseDTO(message, "Duplicate data for the field");
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 	}
+
+	@ExceptionHandler(TokenExpiredException.class)
+	public ResponseEntity<ResponseDTO> tokenExpired(TokenExpiredException e) {
+		ResponseDTO responseDTO = new ResponseDTO(message, "Token expired. Please Login again.");
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.UNAUTHORIZED);
+	}
+
 }
