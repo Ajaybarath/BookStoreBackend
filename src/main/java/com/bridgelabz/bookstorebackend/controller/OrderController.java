@@ -15,7 +15,7 @@ import com.bridgelabz.bookstorebackend.service.OrderServiceIF;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping("/bookstore/order")
+@RequestMapping("bookstore/order")
 public class OrderController {
 
     @Autowired
