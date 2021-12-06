@@ -53,9 +53,11 @@ public class CartServiceImplementation implements CartService {
     public List<CartDTO> getCartItemList(int userID) {
         Cart cart = cartRepository.findByUserId(userID);
         List<CartDTO> cartItems = new ArrayList<>();
-        cart.getCartItems().forEach(bk -> {
-            cartItems.add(new CartDTO(booksService.getBookDataById(bk.getBookId()), bk.getQuantity(), bk.getTotal()));
-        });
+        if (cart.getCartItems().size() > 0) {
+            cart.getCartItems().forEach(bk -> {
+                cartItems.add(new CartDTO(booksService.getBookDataById(bk.getBookId()), bk.getQuantity(), bk.getTotal()));
+            });
+        }
         return cartItems;
     }
 }
