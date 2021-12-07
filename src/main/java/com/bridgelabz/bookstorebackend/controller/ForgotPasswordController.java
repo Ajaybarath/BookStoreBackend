@@ -31,13 +31,13 @@ public class ForgotPasswordController {
 
     @PostMapping("/forgot_password")
     public ResponseEntity<ResponseDTO> processForgotPassword(@RequestHeader("email") String email) {
-        String token = RandomString.make(30);
+        String token = RandomString.make(6);
 
         try {
             System.out.println("token -- " + token);
             customerService.updateResetPasswordToken(token, email);
-            String resetPasswordLink = "http://localhost:8080/bookstore/resetPassword/reset_password";
-            sendEmail(email, resetPasswordLink);
+            String resetPasswordLink = "http://localhost:3000/resetPassword";
+            sendEmail(email, resetPasswordLink, token);
             ResponseDTO responseDTO = new ResponseDTO("message", "We have sent a reset password link to your email. Please check.");
             return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
         } catch (UsernameNotFoundException | UnsupportedEncodingException | MessagingException ex) {
@@ -45,7 +45,7 @@ public class ForgotPasswordController {
         }
     }
 
-    public void sendEmail(String recipientEmail, String link)
+    public void sendEmail(String recipientEmail, String link, String otp)
             throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -59,6 +59,7 @@ public class ForgotPasswordController {
                 + "<p>You have requested to reset your password.</p>"
                 + "<p>Click the link below to change your password:</p>"
                 + "<p><a href=\"" + link + "\">Change my password</a></p>"
+                + "<p>Enter this OTP <b>" + otp + " </b> to reset your password</p>"
                 + "<br>"
                 + "<p>Ignore this email if you do remember your password, "
                 + "or you have not made the request.</p>";
