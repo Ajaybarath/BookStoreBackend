@@ -3,7 +3,6 @@ package com.bridgelabz.bookstorebackend.implementation;
 import com.bridgelabz.bookstorebackend.model.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.*;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,15 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.bridgelabz.bookstorebackend.model.Address;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
-import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
 import com.bridgelabz.bookstorebackend.exception.BooksException;
 import com.bridgelabz.bookstorebackend.repository.AddressRepository;
 import com.bridgelabz.bookstorebackend.repository.CustomerRepository;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 import static java.util.Collections.emptyList;
 //import com.bridgelabz.bookstorebackend.service.UserDetailService;
