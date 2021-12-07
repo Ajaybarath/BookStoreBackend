@@ -53,8 +53,10 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-                .antMatchers(HttpMethod.GET, "/bookstore/books/get/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/bookstore/books/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/bookstore/review/get/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/bookstore/resetPassword/**").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new AuthenticationFilter(authenticationManager()))
