@@ -20,6 +20,8 @@ import com.bridgelabz.bookstorebackend.repository.CustomerRepository;
 import static java.util.Collections.emptyList;
 //import com.bridgelabz.bookstorebackend.service.UserDetailService;
 
+import java.util.List;
+
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
@@ -83,4 +85,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public ApplicationUser getUserDataByEmail(String email) {
         return customerRepository.findUserByEmail(email);
     }
+
+	public List<Address> getAddress(int userId) {
+		List<Address> address= addressRepository.findAddressByUserId(userId);
+		return address;
+	}
 }
