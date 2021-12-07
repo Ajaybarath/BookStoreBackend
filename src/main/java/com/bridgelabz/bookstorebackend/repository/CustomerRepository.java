@@ -12,4 +12,6 @@ public interface CustomerRepository extends JpaRepository<ApplicationUser, Integ
     ApplicationUser getPassword(String email);
 
 	ApplicationUser findUserByEmail(String email);
+
+	ApplicationUser findByResetPasswordToken(String token);
 }
