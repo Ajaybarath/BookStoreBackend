@@ -1,30 +1,27 @@
 package com.bridgelabz.bookstorebackend.implementation;
 
+import com.bridgelabz.bookstorebackend.exception.UsernameNotFoundException;
 import com.bridgelabz.bookstorebackend.model.ApplicationUser;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.*;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.bookstorebackend.model.Address;
 import com.bridgelabz.bookstorebackend.dto.AddressDTO;
-import com.bridgelabz.bookstorebackend.dto.LoginDTO;
 import com.bridgelabz.bookstorebackend.dto.SignUpDTO;
 import com.bridgelabz.bookstorebackend.exception.BooksException;
 import com.bridgelabz.bookstorebackend.repository.AddressRepository;
 import com.bridgelabz.bookstorebackend.repository.CustomerRepository;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import static java.util.Collections.emptyList;
 //import com.bridgelabz.bookstorebackend.service.UserDetailService;
+
+import java.util.List;
 
 
 @Service
@@ -77,7 +74,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) {
         ApplicationUser applicationUser = customerRepository.findUserByEmail(email);
         if (applicationUser == null) {
             throw new UsernameNotFoundException(email);
@@ -88,5 +85,35 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     public ApplicationUser getUserDataByEmail(String email) {
         return customerRepository.findUserByEmail(email);
+    }
+
+	public List<Address> getAddress(int userId) {
+		List<Address> address= addressRepository.findAddressByUserId(userId);
+		return address;
+	}
+
+
+
+    public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException {
+        ApplicationUser customer = customerRepository.findUserByEmail(email);
+        if (customer != null) {
+            customer.setResetPasswordToken(token);
+            customerRepository.save(customer);
+        } else {
+            throw new UsernameNotFoundException("Could not find any customer with the email " + email);
+        }
+    }
+
+    public ApplicationUser getByResetPasswordToken(String token) {
+        return customerRepository.findByResetPasswordToken(token);
+    }
+
+    public void updatePassword(ApplicationUser customer, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        customer.setPassword(encodedPassword);
+
+        customer.setResetPasswordToken(null);
+        customerRepository.save(customer);
     }
 }

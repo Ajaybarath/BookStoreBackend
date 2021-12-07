@@ -6,8 +6,6 @@ import java.util.List;
 
 import com.bridgelabz.bookstorebackend.dto.CartDTO;
 import com.bridgelabz.bookstorebackend.dto.CartItemDTO;
-import com.bridgelabz.bookstorebackend.model.Cart;
-import com.bridgelabz.bookstorebackend.repository.CartRepository;
 import com.bridgelabz.bookstorebackend.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

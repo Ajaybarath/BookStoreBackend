@@ -1,6 +1,9 @@
 package com.bridgelabz.bookstorebackend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
@@ -14,6 +17,10 @@ import lombok.Data;
 public @Data class Address {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "address_id")
+	private int addressId;
+
 	@JoinColumn(name = "user.user_id")
 	private int userId;
 	private String address;
