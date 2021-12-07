@@ -3,6 +3,8 @@ package com.bridgelabz.bookstorebackend.filter;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.bridgelabz.bookstorebackend.dto.LoginDTO;
+import com.bridgelabz.bookstorebackend.exception.JwtExceptionHandler;
+import com.bridgelabz.bookstorebackend.exception.UsernameNotFoundException;
 import com.bridgelabz.bookstorebackend.implementation.UserDetailServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,23 +40,19 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
-                                                HttpServletResponse res) throws AuthenticationException {
-        try {
-            LoginDTO applicationUser = new ObjectMapper().readValue(req.getInputStream(), LoginDTO.class);
-            return authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(applicationUser.getEmail(),
-                            applicationUser.getPassword(), new ArrayList<>())
-            );
-        } catch (BadCredentialsException | IOException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
+                                                HttpServletResponse res) throws UsernameNotFoundException {
 
-    @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-        super.unsuccessfulAuthentication(request, response, failed);
-        response.setStatus(401);
-        response.getWriter().write("Login failed");
+        LoginDTO applicationUser = null;
+        try {
+            applicationUser = new ObjectMapper().readValue(req.getInputStream(), LoginDTO.class);
+        } catch (Exception e) {
+            throw new UsernameNotFoundException("");
+        }
+        return authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(applicationUser.getEmail(),
+                        applicationUser.getPassword(), new ArrayList<>())
+        );
+
     }
 
     @Override
