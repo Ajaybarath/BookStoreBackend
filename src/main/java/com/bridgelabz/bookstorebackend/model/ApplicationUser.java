@@ -30,6 +30,9 @@ public @Data class ApplicationUser {
 	private String email;
 	private String password;
 
+	@Column(name = "reset_password_token")
+	private String resetPasswordToken;
+
 	public ApplicationUser() {
 
 	}
